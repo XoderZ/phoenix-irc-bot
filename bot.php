@@ -1,16 +1,13 @@
 <?php
 // ******************************************************
-<<<<<<< HEAD
 // *                  Phoenix Bot                       *
-=======
 // *                  Phoenix IRC Bot                   *
->>>>>>> e64979e6389149d277b0032e0612d6948e91bcde
 // *        Coded by Jackster35 and xBytez              *
 // *                                                    *
 // *      http://code.google.com/p/phoenix-irc/bot      *
 // *                                                    *
 // ******************************************************
-<<<<<<< HEAD
+
 include("inc/config.php");
 include("inc/corefunctions.php");
 include("inc/commands.php");
@@ -22,7 +19,6 @@ if(!isset($quitmessage)) { die("define a quit message in includes/config.php"); 
 
 if(!isset($ircserver)) { die("define an irc server in includes/config.php"); }
 if(!isset($port)) { die("define a port in includes/config.php"); }
-=======
 
 if (!file_exists("inc/config.php")) { die("Please rename config.php.sample to config.php\n\r"); }
 if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to admins.php\n\r"); }
@@ -41,21 +37,16 @@ if(isset($prefix) === false) { die("define a command prefix in includes/config.p
 
 if(isset($ircserver) === false) { die("define an irc server in includes/config.php"); }
 if(isset($port) === false) { die("define a port in includes/config.php"); }
->>>>>>> e64979e6389149d277b0032e0612d6948e91bcde
 
 if ($nickname == "") { die("define a nickname in includes/config.php"); }
 if ($ident == "") { die("define a ident in includes/config.php"); }
 if ($realname == "") { die("define a realname in includes/config.php"); }
 if ($quitmessage == "") { die("define a quit message in includes/config.php"); }
-<<<<<<< HEAD
-=======
 if ($prefix == "") { die("define a command prefix in includes/config.php"); }
->>>>>>> e64979e6389149d277b0032e0612d6948e91bcde
 
 if ($ircserver == "") { die("define an irc server in includes/config.php"); }
 if ($port == "") { die("define a port in includes/config.php"); }
 
-<<<<<<< HEAD
 $server = array();
 $server['SOCKET'] = @fsockopen($ircserver, $port, $errno, $errstr, 2);
     if($server['SOCKET']) 
@@ -83,8 +74,7 @@ $server['SOCKET'] = @fsockopen($ircserver, $port, $errno, $errstr, 2);
             }
         }
     }
-?>
-=======
+    
 if(isset($nickserv) == true) {
 if ($nickserv == "") { unset($nickserv); }
 }
@@ -153,4 +143,3 @@ if($server['SOCKET'])
     }
 }
 ?>
->>>>>>> e64979e6389149d277b0032e0612d6948e91bcde
