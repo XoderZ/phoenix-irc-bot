@@ -79,10 +79,6 @@ if(isset($nickserv) == true) {
 if ($nickserv == "") { unset($nickserv); }
 }
 
-if(file_exists("pid"))
-{
-    die("The bot is currently running or the bot wasn't shutdown properly. Delete the 'pid' file and retry\n\r");
-}
 $pid = getmypid();
 $pidopen = fopen("pid", 'w');
 fwrite($pidopen, $pid);
