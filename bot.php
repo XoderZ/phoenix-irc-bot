@@ -1,6 +1,5 @@
 <?php
 // ******************************************************
-// *                  Phoenix Bot                       *
 // *                  Phoenix IRC Bot                   *
 // *        Coded by Jackster35 and xBytez              *
 // *                                                    *
@@ -8,23 +7,13 @@
 // *                                                    *
 // ******************************************************
 
-include("inc/config.php");
-include("inc/corefunctions.php");
-include("inc/commands.php");
-
-if(!isset($nickname)) { die("define a nickname in includes/config.php"); }
-if(!isset($ident)) { die("define a ident in includes/config.php"); }
-if(!isset($realname)) { die("define a realname in includes/config.php"); }
-if(!isset($quitmessage)) { die("define a quit message in includes/config.php"); }
-
-if(!isset($ircserver)) { die("define an irc server in includes/config.php"); }
-if(!isset($port)) { die("define a port in includes/config.php"); }
-
 if (!file_exists("inc/config.php")) { die("Please rename config.php.sample to config.php\n\r"); }
 if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to admins.php\n\r"); }
 if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without this :(\n\r"); }
 if (!file_exists("inc/commands.php")) { die("You needs your commands :(\n\r"); }
 if (!file_exists("license.txt")) { die("Why run the bot without it's license? That's stupid :(\n\r"); }
+
+//$debug = true; // Debug for developers (OPTIONAL) (Under construction)
 
 include("inc/config.php");
 include("inc/corefunctions.php");
@@ -47,34 +36,6 @@ if ($prefix == "") { die("define a command prefix in includes/config.php"); }
 if ($ircserver == "") { die("define an irc server in includes/config.php"); }
 if ($port == "") { die("define a port in includes/config.php"); }
 
-$server = array();
-$server['SOCKET'] = @fsockopen($ircserver, $port, $errno, $errstr, 2);
-    if($server['SOCKET']) 
-    { 
-        SendCommand("PASS $password\n\r");
-        SendCommand("NICK $nickname\n\r");
-        SendCommand("USER $ident 8 * :$realname \n\r");
-        while(!feof($server['SOCKET'])) //while we are connected to the server 
-        {   
-            $server['READ_BUFFER'] = fgets($server['SOCKET'], 1024);
-            echo "[RECEIVE] ".$server['READ_BUFFER']."\n\r";
-            
-            if(strpos($server['READ_BUFFER'], "376")) //376 is the message number of the MOTD for the server (The last thing displayed after a successful connection) 
-            { 
-                if (isset($nickserv)) {
-                    SendCommand("PRIVMSG :NickServ identify ". $nickserv ."\n\r");
-                }
-                if (isset($channels)) {
-                    SendCommand("JOIN ". $channels ."\n\r");
-                } 
-            }
-            
-            if (begins_with($server['READ_BUFFER'], "PING")) { 
-                SendCommand("PONG\n\r");
-            }
-        }
-    }
-    
 if(isset($nickserv) == true) {
 if ($nickserv == "") { unset($nickserv); }
 }
@@ -100,7 +61,8 @@ d888888b d8888b.  .o88b.   d8888b.  .d88b.  d888888b
   .88.   88 `88. Y8b  d8   88   8D `8b  d8'    88    
 Y888888P 88   YD  `Y88P'   Y8888P'  `Y88P'     YP\n\n\n\r\r\r
 ";
-
+while (1 == 1) {
+    
 $server = array();
 $server['SOCKET'] = @fsockopen($ircserver, $port, $errno, $errstr, 2);
 
@@ -113,13 +75,9 @@ if($server['SOCKET'])
     while(feof($server['SOCKET']) == false) //while we are connected to the server 
     {   
         $server['READ_BUFFER'] = fgets($server['SOCKET'], 1024);
-        //if ($debug == "true")
-        //{
-            echo "[RECEIVE] ".$server['READ_BUFFER']."\n\r";
-        //}
         
         if(strpos($server['READ_BUFFER'], "376")) //376 is the message number of the MOTD for the server (The last thing displayed after a successful connection) 
-        { 
+        {
             if (isset($nickserv)) 
             {
                 SendCommand("PRIVMSG NickServ :identify ". $nickserv ."\n\r");
@@ -137,5 +95,6 @@ if($server['SOCKET'])
             SendCommand("PONG\n\r");
         }
     }
+}
 }
 ?>
