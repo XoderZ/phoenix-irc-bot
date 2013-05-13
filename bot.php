@@ -11,7 +11,7 @@ if (!file_exists("inc/config.php")) { die("Please rename config.php.sample to co
 if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to admins.php\n\r"); }
 if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without this :(\n\r"); }
 if (!file_exists("inc/commands.php")) { die("You needs your commands :(\n\r"); }
-if (!file_exists("license.txt")) { die("Why run the bot without it's license? That's stupid :(\n\r"); }
+if (!file_exists("LICENSE.md")) { die("Why run the bot without it's license? That's stupid :(\n\r"); }
 
 //$debug = true; // Debug for developers (OPTIONAL) (Under construction)
 
