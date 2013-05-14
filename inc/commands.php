@@ -12,7 +12,7 @@ if(strpos($server['READ_BUFFER'], $prefix."whoami")) {
     $parthost = explode(" PRIVMSG $channels :", $server['READ_BUFFER']);
     $explodehost = explode(":", $parthost[0]);
     $host = $explodehost[1];
-    SendCommand("PRIVMSG $channels :".$host."\n\r");
+    SendCommand("PRIVMSG $channels :".$host."\r\n");
 }
 if(strpos($server['READ_BUFFER'], $prefix."permissions")) {
     $parthost = explode(" PRIVMSG $channels :", $server['READ_BUFFER']);
@@ -20,9 +20,9 @@ if(strpos($server['READ_BUFFER'], $prefix."permissions")) {
     $host = $explodehost[1];
     if (in_array($host, $admins))
     {
-        SendCommand("PRIVMSG $channels :Admin\n\r");
+        SendCommand("PRIVMSG $channels :Admin\r\n");
     } else {
-        SendCommand("PRIVMSG $channels :User\n\r");
+        SendCommand("PRIVMSG $channels :User\r\n");
     }
 }
 if(strpos($server['READ_BUFFER'], $prefix."channel")) {
@@ -33,7 +33,7 @@ if(strpos($server['READ_BUFFER'], $prefix."channel")) {
     $explodeprivmsg = explode(" :.channel", $explodechannel[1]);
     $arraychannel = explode("PRIVMSG ", $explodeprivmsg[0]);
     $channel = $arraychannel[1];
-    SendCommand("PRIVMSG $channels :$channel\n\r");
+    SendCommand("PRIVMSG $channels :$channel\r\n");
 }
 if(strpos($server['READ_BUFFER'], $prefix."kick")) {
     $parthost = explode(" PRIVMSG $channels :", $server['READ_BUFFER']);
@@ -45,13 +45,13 @@ if(strpos($server['READ_BUFFER'], $prefix."kick")) {
     $host = $explodehost[1];
     if (in_array($host, $admins))
     {
-        SendCommand("KICK $channels :".$kick."\n\r");
+        SendCommand("KICK $channels :".$kick."\r\n");
     } else {
-        SendCommand("PRIVMSG $channels :Permission denied.\n\r");
+        SendCommand("PRIVMSG $channels :Permission denied.\r\n");
     }
 }
 if(strpos($server['READ_BUFFER'], $prefix."whoareyou")) {
-    SendCommand("PRIVMSG $channels :I am ".$nickname.".\n\r");
+    SendCommand("PRIVMSG $channels :I am ".$nickname.".\r\n");
 }
 if(strpos($server['READ_BUFFER'], $prefix."time")) {
     $explodeprivmsgtime = explode("PRIVMSG $channels :", $server['READ_BUFFER']);
@@ -60,7 +60,7 @@ if(strpos($server['READ_BUFFER'], $prefix."time")) {
     $timezone = $explodetime[0];
     date_default_timezone_set($timezone);
     $date = date('d/m/Y H:i:s', time());
-    SendCommand("PRIVMSG $channels :The time in ".$timezone." is ".$date." (If timezone doesn't exist, the last timezone will be used.)\n\r");
+    SendCommand("PRIVMSG $channels :The time in ".$timezone." is ".$date." (If timezone doesn't exist, the last timezone will be used.)\r\n");
 }
 if(strpos($server['READ_BUFFER'], $prefix."say")) {
     $parthost = explode(" PRIVMSG $channels :", $server['READ_BUFFER']);
@@ -72,13 +72,13 @@ if(strpos($server['READ_BUFFER'], $prefix."say")) {
     $host = $explodehost[1];
     if (in_array($host, $admins))
     {
-        SendCommand("PRIVMSG $channels :".$message."\n\r");
+        SendCommand("PRIVMSG $channels :".$message."\r\n");
     } else {
-        SendCommand("PRIVMSG $channels :Permission denied.\n\r");
+        SendCommand("PRIVMSG $channels :Permission denied.\r\n");
     }
 }
 if(strpos($server['READ_BUFFER'], $prefix."version")) {
-    SendCommand("PRIVMSG $channels :PhoenixBot Beta ".$version." by Jackster35 & xBytez - 02/1/2012 (since 31/12/12)\n\r");
+    SendCommand("PRIVMSG $channels :PhoenixBot Beta ".$version." by Jackster35 & xBytez - 02/1/2012 (since 31/12/12)\r\n");
 }
 
 ?>
