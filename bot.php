@@ -59,7 +59,7 @@ d888888b d8888b.  .o88b.   d8888b.  .d88b.  d888888b
    88    88oobY' 8P        88oooY' 88    88    88    
    88    88`8b   8b        88~~~b. 88    88    88    
   .88.   88 `88. Y8b  d8   88   8D `8b  d8'    88    
-Y888888P 88   YD  `Y88P'   Y8888P'  `Y88P'     YP\n\n\n\r\r\r
+Y888888P 88   YD  `Y88P'   Y8888P'  `Y88P'     YP\r\r\r\n\n\n
 ";
 while (1 == 1) {
     
@@ -68,9 +68,9 @@ $server['SOCKET'] = @fsockopen($ircserver, $port, $errno, $errstr, 2);
 
 if($server['SOCKET'])
 { 
-    SendCommand("PASS $password\n\r");
-    SendCommand("NICK $nickname\n\r");
-    SendCommand("USER $ident 8 * :$realname \n\r");
+    SendCommand("PASS $password\r\n");
+    SendCommand("NICK $nickname\r\n");
+    SendCommand("USER $ident 8 * :$realname \r\n");
     
     while(feof($server['SOCKET']) == false) //while we are connected to the server 
     {   
@@ -80,11 +80,11 @@ if($server['SOCKET'])
         {
             if (isset($nickserv)) 
             {
-                SendCommand("PRIVMSG NickServ :identify ". $nickserv ."\n\r");
+                SendCommand("PRIVMSG NickServ :identify ". $nickserv ."\r\n");
             }
             if (isset($channels))
             {
-                SendCommand("JOIN ". $channels ."\n\r");
+                SendCommand("JOIN ". $channels ."\r\n");
             } 
         }
         
@@ -92,7 +92,7 @@ if($server['SOCKET'])
         
         if (begins_with($server['READ_BUFFER'], "PING")) 
         { 
-            SendCommand("PONG\n\r");
+            SendCommand("PONG\r\n");
         }
     }
 }
