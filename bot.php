@@ -12,7 +12,7 @@ if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to ad
 if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without this :(\n\r"); }
 if (!file_exists("inc/commands.php")) { die("You needs your commands :(\n\r"); }
 
-//$debug = true; // Debug for developers (OPTIONAL) (Under construction)
+$debug = false; // Debug for developers (OPTIONAL)
 
 include("inc/config.php");
 include("inc/corefunctions.php");
@@ -74,6 +74,10 @@ if($server['SOCKET'])
     while(feof($server['SOCKET']) == false) //while we are connected to the server 
     {   
         $server['READ_BUFFER'] = fgets($server['SOCKET'], 1024);
+        
+        if($debug == true) {
+              echo "[RECIEVE] ".$server['READ_BUFFER']."\r\n";
+        }
         
         if(strpos($server['READ_BUFFER'], "376")) //376 is the message number of the MOTD for the server (The last thing displayed after a successful connection) 
         {
