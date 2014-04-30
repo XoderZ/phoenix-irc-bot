@@ -25,58 +25,6 @@ $debug = false; // Debug for developers (OPTIONAL)
 include("inc/config.php");
 include("inc/corefunctions.php");
 
-if (isset($nickname) === false) {
-    die("define a nickname in includes/config.php");
-}
-if (isset($ident) === false) {
-    die("define a ident in includes/config.php");
-}
-if (isset($realname) === false) {
-    die("define a realname in includes/config.php");
-}
-if (isset($quitmessage) === false) {
-    die("define a quit message in includes/config.php");
-}
-if (isset($prefix) === false) {
-    die("define a command prefix in includes/config.php");
-}
-
-if (isset($ircserver) === false) {
-    die("define an irc server in includes/config.php");
-}
-if (isset($port) === false) {
-    die("define a port in includes/config.php");
-}
-
-if ($nickname == "") {
-    die("define a nickname in includes/config.php");
-}
-if ($ident == "") {
-    die("define a ident in includes/config.php");
-}
-if ($realname == "") {
-    die("define a realname in includes/config.php");
-}
-if ($quitmessage == "") {
-    die("define a quit message in includes/config.php");
-}
-if ($prefix == "") {
-    die("define a command prefix in includes/config.php");
-}
-
-if ($ircserver == "") {
-    die("define an irc server in includes/config.php");
-}
-if ($port == "") {
-    die("define a port in includes/config.php");
-}
-
-if (isset($nickserv) == true) {
-    if ($nickserv == "") {
-        unset($nickserv);
-    }
-}
-
 $pid     = getmypid();
 $pidopen = fopen("pid", 'w');
 fwrite($pidopen, $pid);
