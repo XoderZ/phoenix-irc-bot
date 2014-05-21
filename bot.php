@@ -12,7 +12,7 @@ if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to ad
 if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without this :(\n\r"); }
 if (!file_exists("inc/commands.php")) { die("You need your commands :(\n\r"); }
 
-$debug = true; // Debug for developers (OPTIONAL)
+$debug = true; // Debug for developers developers developers developers (OPTIONAL)
 if ($debug == true) {
  error_reporting(E_ALL);
 }
