@@ -15,7 +15,8 @@ if (isset($nickserv) == true) { if ($nickserv == "") { unset($nickserv); } }
 
 //Core of the bot
 class IRC {
-        public function connect($socketserver, $serverport) {
+        //Core
+		public function connect($socketserver, $serverport) {
                 $this->connection = @fsockopen($socketserver, $serverport, $errno, $errstr, 2);
                 echo $errstr;
         }
@@ -27,5 +28,13 @@ class IRC {
             @fwrite($this->connection, $cmd, strlen($cmd)); //sends the command to the server
             echo "[SEND] $cmd"; //displays it on the screen
         }
+		
+		//Commands core
+		public function getHost($part) {
+			    $parthost    = explode(" PRIVMSG $channels :", $part);
+				$explodehost = explode(":", $parthost[0]);
+				$host        = $explodehost[1];
+				return $host;
+		}
 }
 ?>
