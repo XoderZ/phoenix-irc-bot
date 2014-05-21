@@ -7,7 +7,7 @@
 // *                                                    *
 // ******************************************************
 
-//THESE COMMANDS ARE USELESS AND STUPID. THEY ARE CORRECTLY HORRIBLY AND ARE GOING TO BE REDONE!
+//THESE COMMANDS ARE USELESS AND STUPID. THEY ARE CODED HORRIBLY AND ARE GOING TO BE RE-DONE!
 //PLEASE DO NOT USE THESE AS WE'RE SO ASHAMED OF THEM BUT YOU'RE MORE THAN WELCOME TO.
 
 include('admins.php');
