@@ -18,5 +18,5 @@ $port      = "6667"; // Port (REQUIRED)
 
 $channels = "#xBytez"; // Channels to join (OPTIONAL)
 $nickserv = ""; // NickServ password (OPTIONAL)
-$version  = "0.3.0";
+$version  = "0.4";
 ?>
