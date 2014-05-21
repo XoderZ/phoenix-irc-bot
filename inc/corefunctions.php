@@ -6,13 +6,6 @@
 // *      https://github.com/XoderZ/phoenix-irc-bot/    *
 // *                                                    *
 // ******************************************************
-function SendCommand($cmd)
-{
-    global $server; //Extends our $server array to this function 
-    @fwrite($server['SOCKET'], $cmd, strlen($cmd)); //sends the command to the server 
-    echo "[SEND] $cmd"; //displays it on the screen 
-}
-
 function begins_with($haystack, $needle)
 {
     return strpos($haystack, $needle) === 0;
@@ -31,5 +24,18 @@ if (isset($nickserv) == true) {
         unset($nickserv);
     }
 }
-
+class IRC {
+        public function connect($socketserver, $serverport) {
+                $this->connection = @fsockopen($socketserver, $serverport, $errno, $errstr, 2);
+                echo $errstr;
+        }
+        public function getData() {
+                $this->buffer = fgets($this->connection, 1024);
+        }
+        public function send($cmd)
+        {
+            @fwrite($this->connection, $cmd, strlen($cmd)); //sends the command to the server
+            echo "[SEND] $cmd"; //displays it on the screen
+        }
+}
 ?>

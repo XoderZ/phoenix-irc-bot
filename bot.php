@@ -17,10 +17,13 @@ if (!file_exists("inc/corefunctions.php")) {
     die("The bot won't function without this :(\n\r");
 }
 if (!file_exists("inc/commands.php")) {
-    die("You needs your commands :(\n\r");
+    die("You need your commands :(\n\r");
 }
 
-$debug = false; // Debug for developers (OPTIONAL)
+$debug = true; // Debug for developers (OPTIONAL)
+if ($debug == true) {
+ error_reporting(E_ALL);
+}
 
 include("inc/config.php");
 include("inc/corefunctions.php");
@@ -48,36 +51,35 @@ Y888888P 88   YD  `Y88P'   Y8888P'  `Y88P'     YP\r\r\r\n\n\n
 ";
 while (1 == 1) {
     
-    $server           = array();
-    $server['SOCKET'] = @fsockopen($ircserver, $port, $errno, $errstr, 2);
-    
-    if ($server['SOCKET']) {
-        SendCommand("PASS $password\r\n");
-        SendCommand("NICK $nickname\r\n");
-        SendCommand("USER $ident 8 * :$realname \r\n");
+    $IRC = new IRC();
+    $IRC->connect($ircserver, $port);
+    if ($IRC->connection) {
+        $IRC->send("PASS $password\r\n");
+        $IRC->send("NICK $nickname\r\n");
+        $IRC->send("USER $ident 8 * :$realname \r\n");
         
-        while (feof($server['SOCKET']) == false) //while we are connected to the server 
+        while (feof($IRC->connection) == false) //while we are connected to the server 
             {
-            $server['READ_BUFFER'] = fgets($server['SOCKET'], 1024);
+	   $IRC->getData();
             
             if ($debug == true) {
-                echo "[RECIEVE] " . $server['READ_BUFFER'] . "\r\n";
+                echo "[RECIEVE] " . $IRC->buffer . "\r\n";
             }
             
-            if (strpos($server['READ_BUFFER'], "376")) //376 is the message number of the MOTD for the server (The last thing displayed after a successful connection) 
+            if (strpos($IRC->buffer, "376")) //376 is the message number of the MOTD for the server (The last thing displayed after a successful connection) 
                 {
                 if (isset($nickserv)) {
-                    SendCommand("PRIVMSG NickServ :identify " . $nickserv . "\r\n");
+                    $IRC->send("PRIVMSG NickServ :identify " . $nickserv . "\r\n");
                 }
                 if (isset($channels)) {
-                    SendCommand("JOIN " . $channels . "\r\n");
+                    $IRC->send("JOIN " . $channels . "\r\n");
                 }
             }
             
             include("inc/commands.php");
             
-            if (begins_with($server['READ_BUFFER'], "PING")) {
-                SendCommand("PONG\r\n");
+            if (begins_with($IRC->buffer, "PING")) {
+                $IRC->send("PONG\r\n");
             }
         }
     }

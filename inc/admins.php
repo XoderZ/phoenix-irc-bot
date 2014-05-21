@@ -9,7 +9,7 @@
 // ******************************************************
 
 $admins = array(
-    "EpTic!quasselcor@eptic.me",
-    "xBytez!quasselcor@127.0.0.1"
+    "TheEpTic!~TheEpTic@TheEpTic/DerpBay/Staff",
+    "xBytez!~xBytez@xBytez/Afraid/Helper"
 ); // Define admins here seperated by commas.
 ?>
