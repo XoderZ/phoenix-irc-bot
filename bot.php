@@ -7,10 +7,10 @@
 // *                                                    *
 // ******************************************************
 
-if (!file_exists("inc/config.php")) { die("Please rename config.php.sample to config.php\n\r"); }
-if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to admins.php\n\r"); }
-if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without this :(\n\r"); }
-if (!file_exists("inc/commands.php")) { die("You need your commands :(\n\r"); }
+if (!file_exists("inc/config.php")) { die("Please rename config.php.sample to config.php\r\n"); }
+if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to admins.php\r\n"); }
+if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without this :(\r\n"); }
+if (!file_exists("inc/commands.php")) { die("You need your commands :(\r\n"); }
 
 $debug = true; // Debug for developers developers developers developers (OPTIONAL)
 if ($debug == true) {

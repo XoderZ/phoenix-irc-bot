@@ -9,8 +9,8 @@
 
 //Checks
 function begins_with($haystack, $needle) { return strpos($haystack, $needle) === 0; }
-if (!isset($nickname) || !isset($ident) || !isset($realname) || !isset($prefix) || !isset($ircserver) || !isset($port)) { die("Please check your inc/config.php"); }
-if ($nickname == "" || $ident == "" || $realname == "" || $prefix == "" || $ircserver == "" || $port == "") { die("Please check your inc/config.php"); }
+if (!isset($nickname) || !isset($ident) || !isset($realname) || !isset($prefix) || !isset($ircserver) || !isset($port)) { die("Please check your inc/config.php\r\n"); }
+if ($nickname == "" || $ident == "" || $realname == "" || $prefix == "" || $ircserver == "" || $port == "") { die("Please check your inc/config.php\r\n"); }
 if (isset($nickserv) == true) { if ($nickserv == "") { unset($nickserv); } }
 
 //Core of the bot
