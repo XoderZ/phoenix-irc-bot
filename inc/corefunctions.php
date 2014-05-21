@@ -6,24 +6,14 @@
 // *      https://github.com/XoderZ/phoenix-irc-bot/    *
 // *                                                    *
 // ******************************************************
-function begins_with($haystack, $needle)
-{
-    return strpos($haystack, $needle) === 0;
-}
 
-if (!isset($nickname) || !isset($ident) || !isset($realname) || !isset($quitmessage) || !isset($prefix) || !isset($ircserver) || !isset($port)) {
-    die("Please check your includes/config.php");
-}
+//Checks
+function begins_with($haystack, $needle) { return strpos($haystack, $needle) === 0; }
+if (!isset($nickname) || !isset($ident) || !isset($realname) || !isset($quitmessage) || !isset($prefix) || !isset($ircserver) || !isset($port)) { die("Please check your includes/config.php"); }
+if ($nickname == "" || $ident == "" || $realname == "" || $quitmessage == "" || $prefix == "" || $ircserver == "" || $port == "") { die("Please check your includes/config.php"); }
+if (isset($nickserv) == true) { if ($nickserv == "") { unset($nickserv); } }
 
-if ($nickname == "" || $ident == "" || $realname == "" || $quitmessage == "" || $prefix == "" || $ircserver == "" || $port == "") {
-    die("Please check your includes/config.php");
-}
-
-if (isset($nickserv) == true) {
-    if ($nickserv == "") {
-        unset($nickserv);
-    }
-}
+//Core of the bot
 class IRC {
         public function connect($socketserver, $serverport) {
                 $this->connection = @fsockopen($socketserver, $serverport, $errno, $errstr, 2);

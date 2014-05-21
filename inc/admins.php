@@ -8,8 +8,12 @@
 // *                                                    *
 // ******************************************************
 
+//Administrators of the bot.
+//This gives them extra commands.
+
+//Separate them by comma's.
 $admins = array(
     "TheEpTic!~TheEpTic@TheEpTic/DerpBay/Staff",
     "xBytez!~xBytez@xBytez/Afraid/Helper"
-); // Define admins here seperated by commas.
+);
 ?>

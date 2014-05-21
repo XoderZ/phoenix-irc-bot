@@ -7,18 +7,10 @@
 // *                                                    *
 // ******************************************************
 
-if (!file_exists("inc/config.php")) {
-    die("Please rename config.php.sample to config.php\n\r");
-}
-if (!file_exists("inc/admins.php")) {
-    die("Please rename admins.php.sample to admins.php\n\r");
-}
-if (!file_exists("inc/corefunctions.php")) {
-    die("The bot won't function without this :(\n\r");
-}
-if (!file_exists("inc/commands.php")) {
-    die("You need your commands :(\n\r");
-}
+if (!file_exists("inc/config.php")) { die("Please rename config.php.sample to config.php\n\r"); }
+if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to admins.php\n\r"); }
+if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without this :(\n\r"); }
+if (!file_exists("inc/commands.php")) { die("You need your commands :(\n\r"); }
 
 $debug = true; // Debug for developers (OPTIONAL)
 if ($debug == true) {
@@ -76,7 +68,7 @@ while (1 == 1) {
                 }
             }
             
-            include("inc/commands.php");
+            include("inc/brokencommands.php"); //Using brokencommands.php for now since we haven't created the new ones.
             
             if (begins_with($IRC->buffer, "PING")) {
                 $IRC->send("PONG\r\n");

@@ -6,6 +6,10 @@
 // *      https://github.com/XoderZ/phoenix-irc-bot/    *
 // *                                                    *
 // ******************************************************
+
+//THESE COMMANDS ARE USELESS AND STUPID. THEY ARE CORRECTLY HORRIBLY AND ARE GOING TO BE REDONE!
+//PLEASE DO NOT USE THESE AS WE'RE SO ASHAMED OF THEM BUT YOU'RE MORE THAN WELCOME TO.
+
 include('admins.php');
 global $IRC;
 if (strpos($IRC->buffer, $prefix . "whoami")) {

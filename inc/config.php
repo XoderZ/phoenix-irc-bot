@@ -9,7 +9,6 @@
 $nickname    = "PhoenixBot"; // nickname to use(REQUIRED)
 $ident       = "Phoenix"; // ident to use (REQUIRED)
 $realname    = "Phoenix IRC bot"; // Realname (REQUIRED)
-$quitmessage = "PhoenixIRC bot has been shutdown, oh noes."; // Quit message, only works when using [PREFIX]quit (REQUIRED)
 $prefix      = "!"; //Command prefix (REQUIRED)
 
 $ircserver = "irc.afraidirc.net"; //  RC server you want to connect to. (REQUIRED)
