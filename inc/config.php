@@ -18,10 +18,5 @@ $port      = "6667"; // Port (REQUIRED)
 
 $channels = "#xBytez"; // Channels to join (OPTIONAL)
 $nickserv = ""; // NickServ password (OPTIONAL)
-$version  = "0.2.2";
-
-// DO NOT TOUCH BELOW THIS LINE, IF YOU DO, YOU'LL VOID YOUR NON-EXISITING WARRANTY, and right on support...
-
-$new_version  = file_get_contents("http://phoenix-irc-bot.googlecode.com/hg/COMMIT-ONLY-FOLDER/version.txt"); // Version, obviously, still dont touch it.
-$link_version = file_get_contents("http://phoenix-irc-bot.googlecode.com/hg/COMMIT-ONLY-FOLDER/link.txt"); // Version link, obviously, still dont touch it.
+$version  = "0.3.0";
 ?>
