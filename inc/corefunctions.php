@@ -55,8 +55,11 @@ class IRC
 	 print_r($this->parsedData);
 	 $this->host = $this->parsedData[1];
 	 $this->channel = $this->parsedData[3];
-	 $this->explode = explode($cmd." ",$this->parsedData[4]);
-	 print_r($this->explode);
+	 $this->explode = explode($cmd,$this->parsedData[4]);
+	 $this->cmd = $this->explode[0];
+ 	 $this->args = str_split($this->explode[1]);
+	 array_shift($this->args);
+	 $this->args   = implode('', $this->args);
 	}
 }
 ?>
