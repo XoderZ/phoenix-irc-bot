@@ -54,7 +54,7 @@ class IRC
 	 $this->cmd = $cmd;
 	 
 	 $explode = explode($cmd, $this->parsedData[4]);
-	 $this->args = print_r($explode2);
+	 $this->args = print_r($explode);
 
 	 }
 }
