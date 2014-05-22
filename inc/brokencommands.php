@@ -59,7 +59,6 @@ if (strpos($IRC->buffer, $prefix . "die")) {
         $IRC->send("PRIVMSG $channels :Permission denied.\r\n");
     }
 }
-
 if (strpos($IRC->buffer, $prefix . "permissions")) {
     $parthost    = explode(" PRIVMSG $channels :", $IRC->buffer);
     $explodehost = explode(":", $parthost[0]);
