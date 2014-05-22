@@ -55,7 +55,8 @@ class IRC
 	 print_r($this->parsedData);
 	 $this->host = $this->parsedData[1];
 	 $this->channel = $this->parsedData[3];
-	 $this->cmd = $this->parsedData[4];
+	 $this->explode = explode("!",$this->parsedData[4]);
+	 print_r($this->explode);
 	}
 }
 ?>
