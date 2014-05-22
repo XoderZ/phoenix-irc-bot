@@ -12,13 +12,13 @@ $nickname    = "PhoenixBot"; // nickname to use(REQUIRED)
 $ident       = "Phoenix"; // ident to use (REQUIRED)
 $realname    = "Phoenix IRC bot"; // Realname (REQUIRED)
 $prefix      = "!"; //Command prefix (REQUIRED)
+$nickserv	= ""; // NickServ password (OPTIONAL)
 
 //IRC Details
-$ircserver = "irc.afraidirc.net"; //  RC server you want to connect to. (REQUIRED)
-$password  = ""; // Put server password (OPTIONAL)
-$port      = "6667"; // Port (REQUIRED)
-$channels = "#xBytez"; // Channels to join (OPTIONAL)
+$ircserver	= "irc.afraidirc.net"; //  RC server you want to connect to. (REQUIRED)
+$password	= ""; // Put server password (OPTIONAL)
+$port		= "6667"; // Port (REQUIRED)
+$channels	= "#xBytez"; // Channels to join (OPTIONAL)
 
-$nickserv = ""; // NickServ password (OPTIONAL)
-$version  = "0.4";
+$version	= "0.4";
 ?>

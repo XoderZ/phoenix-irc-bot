@@ -14,7 +14,7 @@ if (!file_exists("inc/commands.php")) { die("You need your commands :(\r\n"); }
 
 $debug = true; // Debug for developers developers developers developers (OPTIONAL)
 if ($debug == true) {
- error_reporting(E_ALL);
+	error_reporting(E_ALL);
 }
 
 include("inc/config.php");
