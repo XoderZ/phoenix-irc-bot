@@ -4,11 +4,12 @@
 global $IRC;
 
 if (strpos($IRC->buffer, $prefix . "permission")) {
+        $channel = $IRC->getChannel($IRC->buffer);
         $host = $IRC->getHost($IRC->buffer);
         if (in_array($host, $admins)) {
-        $IRC->send("PRIVMSG $channels :Admin\r\n");
+        $IRC->send("PRIVMSG $channel :Admin\r\n");
     } else {
-        $IRC->send("PRIVMSG $channels :User\r\n");
+        $IRC->send("PRIVMSG $channel :User\r\n");
     }
 }
 
