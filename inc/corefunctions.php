@@ -50,7 +50,6 @@ class IRC
         $explode = explode(":", $data);
         $explode = explode("PRIVMSG ", $explode[1]);
 		$channel = $explode[1];
-        echo $channel;
     }
     
     public function getHost($data)
@@ -58,7 +57,6 @@ class IRC
         $parthost    = explode(" PRIVMSG " . $this->getChannel($data) . " :", $data);
         $explodehost = explode(":", $parthost[0]);
         $host        = $explodehost[1];
-        echo $host;
     }
 }
 ?>
