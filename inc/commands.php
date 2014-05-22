@@ -7,10 +7,10 @@ if (strpos($IRC->buffer, $prefix . "permission")) {
         $IRC->getHost($IRC->buffer);
 		$IRC->getChannel($IRC->buffer);
 		
-        if (in_array($host, $admins)) {
-        $IRC->send("PRIVMSG ".$IRC->$channel." :Admin\r\n");
+        if (in_array($IRC->host, $admins)) {
+        $IRC->send("PRIVMSG ".$IRC->channel." :Admin\r\n");
     } else {
-        $IRC->send("PRIVMSG ".$IRC->$channel." :User\r\n");
+        $IRC->send("PRIVMSG ".$IRC->channel." :User\r\n");
     }
 }
 
