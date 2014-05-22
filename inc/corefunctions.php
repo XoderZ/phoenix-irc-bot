@@ -28,9 +28,6 @@ if (isset($nickserv) == true) {
 class IRC
 {
 
-	public $channel;
-	public $host;
-
     //Core
     public function connect($socketserver, $serverport)
     {
@@ -52,12 +49,13 @@ class IRC
     public function parseData($data, $cmd)
     {
 	 preg_match("/^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$/", $data, $this->parsedData);
-	 $explode = explode(":", $this->parsedData[0]);
 	 $this->host = $this->parsedData[1];
 	 $this->channel = $this->parsedData[3];
-	 $this->cmd = $explode[2];
-	 $explode2 = explode($this->cmd, $this->parsedData[4]);
+	 $this->cmd = $cmd;
+	 
+	 $explode = explode($cmd, $this->parsedData[4]);
 	 $this->args = print_r($explode2);
+
 	 }
 }
 ?>
