@@ -68,7 +68,7 @@ while (1 == 1) {
                 }
             }
             
-            include("inc/brokencommands.php"); //Using brokencommands.php for now since we haven't created the new ones.
+            include("inc/commands.php"); //Using brokencommands.php for now since we haven't created the new ones.
             
             if (begins_with($IRC->buffer, "PING")) {
                 $IRC->send("PONG\r\n");
