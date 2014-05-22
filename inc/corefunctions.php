@@ -61,7 +61,7 @@ class IRC
         $explode = explode(":", $data);
         $explode = explode("PRIVMSG ", $explode[1]);
 		$this->host = $explode[0];
-		print_r($this->host);
+		print_r($explode);
 	}
 }
 ?>
