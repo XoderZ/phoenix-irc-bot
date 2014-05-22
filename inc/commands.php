@@ -59,7 +59,8 @@ if (strpos($IRC->buffer, $prefix . "channel")) {
 if (strpos($IRC->buffer, $prefix . "say")) {
 	$IRC->parseData($IRC->buffer, $prefix . "say");
 	if (in_array($IRC->host, $admins)) {
-		$IRC->send("PRIVMSG ".$IRC->channel." :".$IRC->args."\r\n");
+		$str = substr($IRC->args, 1);
+		$IRC->send("PRIVMSG ".$IRC->channel." :".$str."\r\n");
 	} else {
 		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
 	}
