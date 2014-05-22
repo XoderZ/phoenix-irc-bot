@@ -27,6 +27,10 @@ if (isset($nickserv) == true) {
 //Core of the bot
 class IRC
 {
+
+	public $channel;
+	public $host;
+
     //Core
     public function connect($socketserver, $serverport)
     {
@@ -50,7 +54,6 @@ class IRC
         $explode = explode(":", $data);
         $explode = explode("PRIVMSG ", $explode[1]);
 		$channel = $explode[1];
-		echo $channel;
 	}
     
     public function getHost($data)
@@ -58,7 +61,6 @@ class IRC
         $explode = explode(":", $data);
         $explode = explode("PRIVMSG ", $explode[1]);
 		$host = $explode[0];
-		echo $host;
 	}
 }
 ?>

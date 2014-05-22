@@ -4,19 +4,21 @@
 global $IRC;
 
 if (strpos($IRC->buffer, $prefix . "permission")) {
-        $host = $IRC->getHost($IRC->buffer);
+        $IRC->getHost($IRC->buffer);
+		$IRC->getChannel($IRC->buffer);
+		
         if (in_array($host, $admins)) {
-        $IRC->send("PRIVMSG ".$IRC->getChannel($IRC->buffer)." :Admin\r\n");
+        $IRC->send("PRIVMSG ".$IRC->$channel." :Admin\r\n");
     } else {
-        $IRC->send("PRIVMSG ".$IRC->getChannel($IRC->buffer)." :User\r\n");
+        $IRC->send("PRIVMSG ".$IRC->$channel." :User\r\n");
     }
 }
 
 if (strpos($IRC->buffer, $prefix . "channel")) {
-		$host = $IRC->getHost($IRC->buffer);
-		$channel = $IRC->getChannel($IRC->buffer);
-		
-        $IRC->send("PRIVMSG ".$channel." :".$host."\r\n");
+		$IRC->getHost($IRC->buffer);
+		$IRC->getChannel($IRC->buffer);
+
+        $IRC->send("PRIVMSG ".$IRC->$channel." :".$IRC->$host."\r\n");
 }
 
 ?>
