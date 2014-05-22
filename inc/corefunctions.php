@@ -51,7 +51,7 @@ class IRC
 	//Commands core
     public function parseData($data)
     {
-	 preg_match("^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$", $data, $this->parsedData);
+	 preg_match(^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$, $data, $this->parsedData);
 	 print_r($this->parsedData);
 	}
 }
