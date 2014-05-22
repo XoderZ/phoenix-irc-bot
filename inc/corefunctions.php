@@ -52,13 +52,12 @@ class IRC
     public function parseData($data, $cmd)
     {
 	 preg_match("/^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$/", $data, $this->parsedData);
-	 print_r($this->parsedData);
+	 $explode = explode(":", $this->parsedData[0]);
 	 $this->host = $this->parsedData[1];
 	 $this->channel = $this->parsedData[3];
-	 $this->cmd = $this->parsedData[4];
-	 $explode = explode(":", $this->parsedData[0]);
-	 // $this->args =
-	 print_r($explode);
+	 $this->cmd = $explode[2];
+	 $explode2 = explode($this->cmd, $this->parsedData[4]);
+	 $this->args = $explode2;
 	 }
 }
 ?>
