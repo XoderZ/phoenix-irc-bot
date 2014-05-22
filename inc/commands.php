@@ -2,7 +2,8 @@
 //Please use brokencommands.php for now. :)
 
 if (strpos($IRC->buffer, $prefix . "permission")) {
-	if (in_array($IRC->getHost($IRC->buffer), $admins)) {
+	$host = $IRC->getHost($IRC->buffer);
+	if (in_array($host, $admins)) {
         $IRC->send("PRIVMSG $channels :Admin\r\n");
     } else {
         $IRC->send("PRIVMSG $channels :User\r\n");
