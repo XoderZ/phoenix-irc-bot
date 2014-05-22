@@ -40,25 +40,25 @@ d888888b d8888b.  .o88b.   d8888b.  .d88b.  d888888b
    88    88oobY' 8P        88oooY' 88    88    88    
    88    88`8b   8b        88~~~b. 88    88    88    
   .88.   88 `88. Y8b  d8   88   8D `8b  d8'    88    
-Y888888P 88   YD  `Y88P'   Y8888P'  `Y88P'     YP\r\r\r\n\n\n
+Y888888P 88   YD  `Y88P'   Y8888P'  `Y88P'     YP\r\n\r\n\r\n
 ";
 while (1 == 1) {
-    
+
     $IRC = new IRC();
     $IRC->connect($ircserver, $port);
     if ($IRC->connection) {
         $IRC->send("PASS $password\r\n");
         $IRC->send("NICK $nickname\r\n");
         $IRC->send("USER $ident 8 * :$realname \r\n");
-        
+
         while (feof($IRC->connection) == false) //while we are connected to the server 
             {
 			$IRC->getData();
-            
+
             if ($debug == true) {
                 echo "[RECIEVE] " . $IRC->buffer . "\r\n";
             }
-            
+
             if (strpos($IRC->buffer, "376")) //376 is the message number of the MOTD for the server (The last thing displayed after a successful connection) 
                 {
                 if (isset($nickserv)) {
@@ -68,9 +68,9 @@ while (1 == 1) {
                     $IRC->send("JOIN " . $channels . "\r\n");
                 }
             }
-            
+
             include("inc/commands.php");
-            
+
             if (begins_with($IRC->buffer, "PING")) {
                 $IRC->send("PONG\r\n");
             }

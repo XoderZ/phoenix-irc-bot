@@ -46,8 +46,8 @@ class IRC
         @fwrite($this->connection, $cmd, strlen($cmd)); //sends the command to the server
         echo "[SEND] $cmd"; //displays it on the screen
     }
-	
-	
+
+
 	//Commands core
     public function parseData($data, $cmd)
     {
