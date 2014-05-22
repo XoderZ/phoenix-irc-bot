@@ -18,7 +18,7 @@ if (strpos($IRC->buffer, $prefix . "channel")) {
 		$IRC->getHost($IRC->buffer);
 		$IRC->getChannel($IRC->buffer);
 
-        $IRC->send("PRIVMSG ".$IRC->$channel." :".$IRC->$host."\r\n");
+        $IRC->send("PRIVMSG ".$IRC->channel." :".$IRC->host."\r\n");
 }
 
 ?>
