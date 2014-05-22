@@ -7,6 +7,10 @@
 // *                                                    *
 // ******************************************************
 
+
+//You can edit this without restarting the bot due to bot.php constantly refreshing the file.
+
+
 global $IRC;
 
 if (strpos($IRC->buffer, $prefix . "permission")) {
@@ -22,6 +26,16 @@ if (strpos($IRC->buffer, $prefix . "die")) {
 	$IRC->parseData($IRC->buffer, $prefix . "die");
 	if (in_array($IRC->host, $admins)) {
 		$IRC->send("QUIT Die command initiated\r\n");
+		die("\r\n\r\n".$IRC->host." told me to die.\r\n");
+	} else {
+		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+	}
+}
+
+if (strpos($IRC->buffer, $prefix . "restart")) {
+	$IRC->parseData($IRC->buffer, $prefix . "restart");
+	if (in_array($IRC->host, $admins)) {
+		$IRC->send("QUIT Restarting..\r\n");
 	} else {
 		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
 	}
@@ -30,7 +44,7 @@ if (strpos($IRC->buffer, $prefix . "die")) {
 if (strpos($IRC->buffer, $prefix . "raw")) {
 	$IRC->parseData($IRC->buffer, $prefix . "raw");
 	if (in_array($IRC->host, $admins)) {
-		$IRC->send("$IRC->args\r\n");
+		$IRC->send($IRC->args."\r\n");
 	} else {
 		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
 	}
@@ -40,5 +54,34 @@ if (strpos($IRC->buffer, $prefix . "channel")) {
 		$IRC->parseData($IRC->buffer, $prefix . "channel");
         $IRC->send("PRIVMSG ".$IRC->channel." :".$IRC->channel."\r\n");
 }
+
+//SAY, JOIN AND PART
+if (strpos($IRC->buffer, $prefix . "say")) {
+	$IRC->parseData($IRC->buffer, $prefix . "say");
+	if (in_array($IRC->host, $admins)) {
+		$IRC->send("PRIVMSG ".$IRC->channel." :".$IRC->args."\r\n");
+	} else {
+		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+	}
+}
+
+if (strpos($IRC->buffer, $prefix . "join")) {
+	$IRC->parseData($IRC->buffer, $prefix . "join");
+	if (in_array($IRC->host, $admins)) {
+		$IRC->send("JOIN ".$IRC->args."\r\n");
+	} else {
+		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+	}
+}
+
+if (strpos($IRC->buffer, $prefix . "part")) {
+	$IRC->parseData($IRC->buffer, $prefix . "part");
+	if (in_array($IRC->host, $admins)) {
+		$IRC->send("PART ".$IRC->args."\r\n");
+	} else {
+		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+	}
+}
+
 
 ?>
