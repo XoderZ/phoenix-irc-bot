@@ -19,6 +19,7 @@ if ($debug == true) {
 
 include("inc/config.php");
 include("inc/corefunctions.php");
+include("inc/admins.php");
 
 $pid     = getmypid();
 $pidopen = fopen("pid", 'w');
