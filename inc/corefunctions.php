@@ -28,10 +28,14 @@ class IRC {
             @fwrite($this->connection, $cmd, strlen($cmd)); //sends the command to the server
             echo "[SEND] $cmd"; //displays it on the screen
         }
+		public function channel($data) {
+			$explodechannel = explode(":", $data);
+			echo $explodechannel;
+		}
 		
 		//Commands core
-		public function getHost($part) {
-			    $parthost    = explode(" PRIVMSG $channels :", $part);
+		public function getHost($data) {
+			    $parthost    = explode(" PRIVMSG ".$this->channel($data)." :", $data);
 				$explodehost = explode(":", $parthost[0]);
 				$host        = $explodehost[1];
 				echo $host;
