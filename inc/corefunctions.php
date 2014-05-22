@@ -59,9 +59,8 @@ class IRC
     public function getHost($data)
     {
         $explode = explode(":", $data);
-        $explode = explode("PRIVMSG ", $explode[1]);
+        $explode = explode(" ", $explode[1]);
 		$this->host = $explode[0];
-		print_r($explode);
 	}
 }
 ?>
