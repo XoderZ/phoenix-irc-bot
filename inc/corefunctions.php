@@ -8,37 +8,54 @@
 // ******************************************************
 
 //Checks
-function begins_with($haystack, $needle) { return strpos($haystack, $needle) === 0; }
-if (!isset($nickname) || !isset($ident) || !isset($realname) || !isset($prefix) || !isset($ircserver) || !isset($port)) { die("Please check your inc/config.php\r\n"); }
-if ($nickname == "" || $ident == "" || $realname == "" || $prefix == "" || $ircserver == "" || $port == "") { die("Please check your inc/config.php\r\n"); }
-if (isset($nickserv) == true) { if ($nickserv == "") { unset($nickserv); } }
+function begins_with($haystack, $needle)
+{
+    return strpos($haystack, $needle) === 0;
+}
+if (!isset($nickname) || !isset($ident) || !isset($realname) || !isset($prefix) || !isset($ircserver) || !isset($port)) {
+    die("Please check your inc/config.php\r\n");
+}
+if ($nickname == "" || $ident == "" || $realname == "" || $prefix == "" || $ircserver == "" || $port == "") {
+    die("Please check your inc/config.php\r\n");
+}
+if (isset($nickserv) == true) {
+    if ($nickserv == "") {
+        unset($nickserv);
+    }
+}
 
 //Core of the bot
-class IRC {
-        //Core
-		public function connect($socketserver, $serverport) {
-                $this->connection = @fsockopen($socketserver, $serverport, $errno, $errstr, 2);
-                echo $errstr;
-        }
-        public function getData() {
-                $this->buffer = fgets($this->connection, 1024);
-        }
-        public function send($cmd)
-        {
-            @fwrite($this->connection, $cmd, strlen($cmd)); //sends the command to the server
-            echo "[SEND] $cmd"; //displays it on the screen
-        }
-		public function channel($data) {
-			$explodechannel = explode(":", $data);
-			echo $explodechannel;
-		}
-		
-		//Commands core
-		public function getHost($data) {
-			    $parthost    = explode(" PRIVMSG ".$this->channel($data)." :", $data);
-				$explodehost = explode(":", $parthost[0]);
-				$host        = $explodehost[1];
-				echo $host;
-		}
+class IRC
+{
+    //Core
+    public function connect($socketserver, $serverport)
+    {
+        $this->connection = @fsockopen($socketserver, $serverport, $errno, $errstr, 2);
+        echo $errstr;
+    }
+    public function getData()
+    {
+        $this->buffer = fgets($this->connection, 1024);
+    }
+    public function send($cmd)
+    {
+        @fwrite($this->connection, $cmd, strlen($cmd)); //sends the command to the server
+        echo "[SEND] $cmd"; //displays it on the screen
+    }
+    public function channel($data)
+    {
+        $explode = explode(":", $data);
+        $explode = explode("PRIVMSG ", $explode[1]);
+        echo $explode[1];
+    }
+    
+    //Commands core
+    public function getHost($data)
+    {
+        $parthost    = explode(" PRIVMSG " . $this->channel($data) . " :", $data);
+        $explodehost = explode(":", $parthost[0]);
+        $host        = $explodehost[1];
+        echo $host;
+    }
 }
 ?>
