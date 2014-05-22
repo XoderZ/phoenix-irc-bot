@@ -52,7 +52,7 @@ while (1 == 1) {
         
         while (feof($IRC->connection) == false) //while we are connected to the server 
             {
-	   $IRC->getData();
+			$IRC->getData();
             
             if ($debug == true) {
                 echo "[RECIEVE] " . $IRC->buffer . "\r\n";
