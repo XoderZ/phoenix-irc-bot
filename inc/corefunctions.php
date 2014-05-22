@@ -49,18 +49,10 @@ class IRC
 	
 	
 	//Commands core
-    public function getChannel($data)
+    public function parseData($data)
     {
-        $explode = explode(":", $data);
-        $explode = explode("PRIVMSG ", $explode[1]);
-		$this->channel = $explode[1];
-	}
-    
-    public function getHost($data)
-    {
-        $explode = explode(":", $data);
-        $explode = explode(" ", $explode[1]);
-		$this->host = $explode[0];
+	 preg_match("^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$", $data, $this->parsedData);
+	 print_r($this->parsedData);
 	}
 }
 ?>
