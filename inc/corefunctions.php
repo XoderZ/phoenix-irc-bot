@@ -49,13 +49,13 @@ class IRC
 	
 	
 	//Commands core
-    public function parseData($data)
+    public function parseData($data, $cmd)
     {
 	 preg_match("/^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$/", $data, $this->parsedData);
 	 print_r($this->parsedData);
 	 $this->host = $this->parsedData[1];
 	 $this->channel = $this->parsedData[3];
-	 $this->explode = explode("!",$this->parsedData[4]);
+	 $this->explode = explode($cmd,$this->parsedData[4]);
 	 print_r($this->explode);
 	}
 }

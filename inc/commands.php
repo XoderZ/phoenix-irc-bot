@@ -4,7 +4,7 @@
 global $IRC;
 
 if (strpos($IRC->buffer, $prefix . "permission")) {
-	$IRC->parseData($IRC->buffer);
+	$IRC->parseData($IRC->buffer, $prefix . "permission");
 	if (in_array($IRC->host, $admins)) {
 		$IRC->send("PRIVMSG ".$IRC->channel." :Admin\r\n");
 	} else {
