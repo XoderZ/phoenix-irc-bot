@@ -1,5 +1,11 @@
 <?php
-//Please use brokencommands.php for now. :)
+// ******************************************************
+// *                  Phoenix Bot                       *
+// *        Coded by Jackster35 and xBytez              *
+// *                                                    *
+// *      https://github.com/XoderZ/phoenix-irc-bot/    *
+// *                                                    *
+// ******************************************************
 
 global $IRC;
 
