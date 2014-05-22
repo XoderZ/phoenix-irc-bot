@@ -52,7 +52,7 @@ class IRC
     public function parseData($data, $cmd)
     {
 	 preg_match("/^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$/", $data, $this->parsedData);
-	 print_r($this->parsedData);
+	 print_r($this->parsedData."\r\n");
 	 $this->host = $this->parsedData[1];
 	 $this->channel = $this->parsedData[3];
 	 $this->explode = explode($cmd,$this->parsedData[4]);
@@ -60,6 +60,8 @@ class IRC
  	 $this->args = str_split($this->explode[1]);
 	 array_shift($this->args);
 	 $this->args   = implode('', $this->args);
+	 print_r($this->cmd."\r\n")
+	 print_r($this->args."\r\n")
 	}
 }
 ?>
