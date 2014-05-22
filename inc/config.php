@@ -20,5 +20,5 @@ $password	= ""; // Put server password (OPTIONAL)
 $port		= "6667"; // Port (REQUIRED)
 $channels	= "#xBytez"; // Channels to join (OPTIONAL)
 
-$version	= "0.4";
+$version	= "1.0";
 ?>
