@@ -34,7 +34,7 @@ class IRC {
 			    $parthost    = explode(" PRIVMSG $channels :", $part);
 				$explodehost = explode(":", $parthost[0]);
 				$host        = $explodehost[1];
-				return $host;
+				echo $host;
 		}
 }
 ?>
