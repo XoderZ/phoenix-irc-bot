@@ -13,7 +13,7 @@ if (strpos($IRC->buffer, $prefix . "permission")) {
 }
 
 if (strpos($IRC->buffer, $prefix . "channel")) {
-        $channel = $IRC->channel($IRC->buffer);
+        $channel = $IRC->getChannel($IRC->buffer);
         $IRC->send("PRIVMSG ".$channel." :".$channel."\r\n");
 }
 
