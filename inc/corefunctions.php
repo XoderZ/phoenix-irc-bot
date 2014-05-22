@@ -50,7 +50,7 @@ class IRC
         $explode = explode(":", $data);
         $explode = explode("PRIVMSG ", $explode[1]);
 		$channel = $explode[1];
-        echo $channel;
+        return $channel;
     }
     
     public function getHost($data)
