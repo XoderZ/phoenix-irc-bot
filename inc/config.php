@@ -12,7 +12,7 @@ $nickname    = "PhoenixBot"; // nickname to use(REQUIRED)
 $ident       = "Phoenix"; // ident to use (REQUIRED)
 $realname    = "Phoenix IRC bot"; // Realname (REQUIRED)
 $prefix      = "!"; //Command prefix (REQUIRED)
-$nickserv	= ""; // NickServ password (OPTIONAL)
+$nickserv	 = ""; // NickServ password (OPTIONAL)
 
 //IRC Details
 $ircserver	= "irc.afraidirc.net"; //  RC server you want to connect to. (REQUIRED)
