@@ -60,8 +60,8 @@ class IRC
  	 $this->args = str_split($this->explode[1]);
 	 array_shift($this->args);
 	 $this->args   = implode('', $this->args);
-	 print_r($this->cmd."\r\n")
-	 print_r($this->args."\r\n")
+	 print_r($this->cmd."\r\n");
+	 print_r($this->args."\r\n");
 	}
 }
 ?>
