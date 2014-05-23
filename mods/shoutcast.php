@@ -14,13 +14,12 @@ $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 //Do not touch unless you know what you're doing
 
 if ($enabled == true) {
-    function getNowPlaying($ip, $port)
+    function getNowPlaying($sc_ip, $sc_port)
     {
-        $fp = @fsockopen($ip, $port, $errno, $errstr, 1);
+        $fp = @fsockopen($sc_ip, $sc_port, $errno, $errstr, 1);
         fputs($fp, "GET / HTTP/1.0\r\nUser-Agent: Phoenix IRC Bot\r\n\r\n");
         $info  = str_replace('</body></html>', "", $fp);
         $split = explode(',', $info);
-		print_r($split);
         if (empty($split[6])) {
         } else {
             $title = str_replace('\'', '`', $split[6]);
