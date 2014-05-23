@@ -7,7 +7,6 @@ global $IRC;
 $enabled     = true; //Is this module enabled on the bot? False = No, True = Yes
 $ip   = "69.46.88.20"; //Can also be a domain
 $port = "80"; // Port
-$sc_name     = "idobi Radio"; //Radio's name
 $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 //END
 
@@ -21,6 +20,7 @@ if ($enabled == true) {
         fputs($fp, "GET / HTTP/1.0\r\nUser-Agent: Phoenix IRC Bot\r\n\r\n");
         $info  = str_replace('</body></html>', "", $fp);
         $split = explode(',', $info);
+		print_r($split);
         if (empty($split[6])) {
         } else {
             $title = str_replace('\'', '`', $split[6]);
@@ -41,9 +41,7 @@ if ($enabled == true) {
         $current = "Nothing";
         $last    = "Nothing";
         $x       = 0;
-        $IRC->send("PRIVMSG " . $channel . " :Shoutcast plugin loaded...\r\n");
-        $IRC->send("PRIVMSG " . $channel . " :Sending songs from " . $sc_name . "\r\n");
-        
+
         while (1) {
             if ($current !== $last) {
                 $last = $current;
