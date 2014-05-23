@@ -5,7 +5,7 @@ global $IRC;
 
 //Do not touch unless you know what you're doing
 
-if ($enabled == true) {
+if ($sc_enabled == true) {
     function getNowPlaying($sc_ip, $sc_port)
     {
 		ini_set("user_agent", "Mozilla/5.0 (compatible; Phoenix IRC Bot; +https://github.com/XoderZ/phoenix-irc-bot)");
@@ -31,11 +31,11 @@ if ($enabled == true) {
         while (1) {
             if ($current !== $last) {
                 $last = $current;
-                $IRC->send("PRIVMSG " . $channel . " :[Shoutcast] \x02\x033NP\x02: " . $current . "\r\n");
+                $IRC->send("PRIVMSG " . $sc_channel . " :[Shoutcast] \x02\x033NP\x02: " . $current . "\r\n");
             }
             if ($x == 10) {
                 $x       = 0;
-                $current = getNowPlaying($ip, $port);
+                $current = getNowPlaying($sc_ip, $sc_port);
             } else {
                 $x++;
                 sleep(1);
