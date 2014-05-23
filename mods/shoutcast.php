@@ -1,5 +1,4 @@
 <?php
-include("../inc/config.php");
 
 //Shoutcast module created by TheEpTic & xBytez
 global $IRC;
