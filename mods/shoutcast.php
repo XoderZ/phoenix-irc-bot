@@ -17,8 +17,8 @@ if($enabled == true) {
 		//Parent
 	} else {
 		//Child
-		sleep(5);
-		$IRC->send("PRIVMSG #xBytez :Hi bby\r\n");
+		sleep(1);
+		$IRC->send("PRIVMSG $channel :Hi bby\r\n");
 	}
 }
 ?>
