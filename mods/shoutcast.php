@@ -4,52 +4,61 @@
 global $IRC;
 
 //Change these
-$enabled = true; //Is this module enabled on the bot? False = No, True = Yes
-$sc_url_ip = "69.46.88.20"; // <= CHANGE THIS
+$enabled     = true; //Is this module enabled on the bot? False = No, True = Yes
+$sc_url_ip   = "69.46.88.20"; // <= CHANGE THIS
 $sc_url_port = "80"; // <= CHANGE THIS
-$sc_name = "idobi Radio";
-$channel = "#xBytez"; //Channel to send Shoutcast data to.
+$sc_name     = "idobi Radio";
+$channel     = "#xBytez"; //Channel to send Shoutcast data to.
 //END
 
 
 //Do not touch unless you know what you're doing
 
-if($enabled == true) {
-	function getNowPlaying($sc_url_ip,$sc_url_port)
-	{
-		// This script is provided free of charge
-		// from http://streamfinder.com
-		$open = fsockopen($sc_url_ip,$sc_url_port,$errno,$errstr,'.5'); 
-		if ($open) { 
-			fputs($open,"GET /7.html HTTP/1.1\nUser-Agent:Mozilla\n\n"); 
-			stream_set_timeout($open,'1');
-			$read = fread($open,200);
-			$text = explode(",",$read);
-			if($text[6] == '' || $text[6] == '</body></html>'){ $msg = ' live stream '; } else { $msg = $text[6]; }
-			$text = 'Now Playing ('.$src.'): '.$msg; 
-		} else {  return false; } 
-		fclose($open);
-		return $text;	
-	}
-	echo "Shoutcast module started...\r\n";
-	$pid = pcntl_fork();
-	if($pid == -1) {
-		echo "Forking for Shoutcast failed...\r\n";
-		exit(1);
-	} else if ($pid) {
-		//Parent
-	} else {
-		//Child
-		$current_song = getNowPlaying($sc_url_ip,$sc_url_port);
-		$last_song = "Nothing";
-		$IRC->send("PRIVMSG ".$channel." :Shoutcast plugin loaded...\r\n");
-		$IRC->send("PRIVMSG ".$channel." :Sending songs from ".$sc_name."\r\n");
-		
-		while(1) {
-			if($current_song == $last_song) { } else {
-				$IRC->send("PRIVMSG ".$channel." :\x02\x033NP: ".$current_song."\r\n");
-			}
-		}
-	}
+if ($enabled == true) {
+    function getNowPlaying($sc_url_ip, $sc_url_port)
+    {
+        // This script is provided free of charge
+        // from http://streamfinder.com
+        $open = fsockopen($sc_url_ip, $sc_url_port, $errno, $errstr, '.5');
+        if ($open) {
+            fputs($open, "GET /7.html HTTP/1.1\nUser-Agent:Mozilla\n\n");
+            stream_set_timeout($open, '1');
+            $read = fread($open, 200);
+            $text = explode(",", $read);
+            if ($text[6] == '' || $text[6] == '</body></html>') {
+                $msg = ' live stream ';
+            } else {
+                $msg = $text[6];
+            }
+            $text = $msg;
+        } else {
+            return false;
+        }
+        fclose($open);
+        return $text;
+    }
+    
+    echo "Shoutcast module started...\r\n";
+    $pid = pcntl_fork();
+    if ($pid == -1) {
+        echo "Forking for Shoutcast failed...\r\n";
+        exit(1);
+    } else if ($pid) {
+        //Parent
+    } else {
+        //Child
+        $current_song = getNowPlaying($sc_url_ip, $sc_url_port);
+        $last_song    = "Nothing";
+        $IRC->send("PRIVMSG " . $channel . " :Shoutcast plugin loaded...\r\n");
+        $IRC->send("PRIVMSG " . $channel . " :Sending songs from " . $sc_name . "\r\n");
+        
+        while (1) {
+            if ($current_song == $last_song) {
+            } else {
+                $IRC->send("PRIVMSG " . $channel . " :\x02\x033NP: " . $current_song . "\r\n");
+                $last_log = $current_song;
+            }
+        }
+    }
 }
 ?>

@@ -44,7 +44,6 @@ class IRC
 		echo "[SEND] $cmd"; //displays it on the screen
 	}
 
-
 	//Commands core
 	public function parseData($data, $cmd)
 	{
