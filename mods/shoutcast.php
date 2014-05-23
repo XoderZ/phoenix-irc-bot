@@ -17,18 +17,16 @@ $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 if ($enabled == true) {
     function getNowPlaying($sc_url_ip, $sc_url_port)
     {
-        $curl                  = curl_init();
-        $headers["User-Agent"] = "User-Agent: Phoenix IRC Bot - +https://github.com/XoderZ/phoenix-irc-bot\r\n";
-        curl_setopt($curl, CURLOPT_URL, $sc_url_ip);
-        curl_setopt($curl, CURLOPT_PORT, $sc_url_port);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 80);
-        curl_setopt($curl, CURLOPT_TIMEOUT, '500');
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        $latest = curl_exec($curl);
-        curl_close($curl);
-        $latest = explode(' ', $latest);
-        print_r($latest);
-        return $latest;
+        $fp = @fsockopen($ip, $port, $errno, $errstr, 1);
+        fputs($fp, "GET / HTTP/1.0\r\nUser-Agent: Phoenix IRC Bot\r\n\r\n");
+        $info  = str_replace('</body></html>', "", $info);
+        $split = explode(',', $info);
+        if (empty($split[6])) {
+        } else {
+            $title = str_replace('\'', '`', $split[6]);
+            $title = str_replace(',', ' ', $title);
+            return $title; // Diaplays song
+        }
     }
     
     echo "Shoutcast module started...\r\n";
