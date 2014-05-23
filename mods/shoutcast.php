@@ -47,16 +47,15 @@ if ($enabled == true) {
         //Parent
     } else {
         //Child
-        $current_song = getNowPlaying($sc_url_ip, $sc_url_port);
-        $last_song    = "Nothing";
+        $current = getNowPlaying($sc_url_ip, $sc_url_port);
+        $last    = "Nothing";
         $IRC->send("PRIVMSG " . $channel . " :Shoutcast plugin loaded...\r\n");
         $IRC->send("PRIVMSG " . $channel . " :Sending songs from " . $sc_name . "\r\n");
         
         while (1) {
-            if ($current_song == $last_song) {
-            } else {
-                $IRC->send("PRIVMSG " . $channel . " :\x02\x033NP: " . $current_song . "\r\n");
-                $last_log = $current_song;
+            if ($current !== $last) {
+				$last = $current;
+                $IRC->send("PRIVMSG " . $channel . " :\x02\x033NP: " . $current . "\r\n");
             }
         }
     }
