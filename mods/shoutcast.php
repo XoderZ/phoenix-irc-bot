@@ -1,6 +1,6 @@
 <?php
 
-//Shoutcast module created by TheEpTic
+//Shoutcast module created by TheEpTic & xBytez
 global $IRC;
 
 //Change these
@@ -15,7 +15,23 @@ $channel = "#xBytez"; //Channel to send Shoutcast data to.
 //Do not touch unless you know what you're doing
 
 if($enabled == true) {
-	echo "Shoutcast module created by TheEpTic started...\r\n";
+	function getNowPlaying($sc_url_ip,$sc_url_port)
+	{
+		// This script is provided free of charge
+		// from http://streamfinder.com
+		$open = fsockopen($sc_url_ip,$sc_url_port,$errno,$errstr,'.5'); 
+		if ($open) { 
+			fputs($open,"GET /7.html HTTP/1.1\nUser-Agent:Mozilla\n\n"); 
+			stream_set_timeout($open,'1');
+			$read = fread($open,200);
+			$text = explode(",",$read);
+			if($text[6] == '' || $text[6] == '</body></html>'){ $msg = ' live stream '; } else { $msg = $text[6]; }
+			$text = 'Now Playing ('.$src.'): '.$msg; 
+		} else {  return false; } 
+		fclose($open);
+		return $text;	
+	}
+	echo "Shoutcast module started...\r\n";
 	$pid = pcntl_fork();
 	if($pid == -1) {
 		echo "Forking for Shoutcast failed...\r\n";
@@ -26,7 +42,7 @@ if($enabled == true) {
 		//Child
 		$current_song = getNowPlaying($sc_url_ip,$sc_url_port);
 		$last_song = "Nothing";
-		$IRC->send("PRIVMSG ".$channel." :TheEpTic's Shoutcast plugin loaded...\r\n");
+		$IRC->send("PRIVMSG ".$channel." :Shoutcast plugin loaded...\r\n");
 		$IRC->send("PRIVMSG ".$channel." :Sending songs from ".$sc_name."\r\n");
 		
 		while(1) {
