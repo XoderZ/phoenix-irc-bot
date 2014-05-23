@@ -5,8 +5,8 @@ global $IRC;
 
 //Change these
 $enabled     = true; //Is this module enabled on the bot? False = No, True = Yes
-$sc_url_ip   = "69.46.88.20"; // <= CHANGE THIS
-$sc_url_port = "80"; // <= CHANGE THIS
+$sc_url_ip   = "69.46.88.20";
+$sc_url_port = "80";
 $sc_name     = "idobi Radio";
 $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 //END
@@ -17,14 +17,17 @@ $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 if ($enabled == true) {
     function getNowPlaying($sc_url_ip, $sc_url_port)
     {
-        $options = stream_context_create(array(
-            'http' => array(
-                'timeout' => 500,
-                'header' => 'Accept-language: en\r\n' . 'User-Agent: Phoenix IRC Bot - +https://github.com/XoderZ/phoenix-irc-bot\r\n'
-            )
-        ));
-        $latest  = file_get_contents("http://" . $sc_url_ip . ":" . $sc_url_port . "/", false, $options);
-		print_r($latest);
+        $curl                  = curl_init();
+        $headers["User-Agent"] = "User-Agent: Phoenix IRC Bot - +https://github.com/XoderZ/phoenix-irc-bot\r\n";
+        curl_setopt($curl, CURLOPT_URL, $sc_url_ip);
+        curl_setopt($curl, CURLOPT_PORT, $sc_url_port);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 80);
+        curl_setopt($curl, CURLOPT_TIMEOUT, '500');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        $latest = curl_exec($curl);
+        curl_close($curl);
+        $latest = explode(' ', $latest);
+        print_r($latest);
         return $latest;
     }
     
