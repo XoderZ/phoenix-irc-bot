@@ -58,10 +58,9 @@ if (strpos($IRC->buffer, $prefix . "raw")) {
 if (strpos($IRC->buffer, $prefix . "eval")) {
 	$IRC->parseData($IRC->buffer, $prefix . "eval");
 	if (in_array($IRC->host, $admins)) {
-		$str = substr($IRC->args, 1);
-		$eval = eval($str);
+		$eval = eval($IRC->args);
 		print_r($eval);
-		print_r($str);
+		print_r($IRC->args);
 		$IRC->send("PRIVMSG ".$IRC->channel." :".$eval."\r\n");
 	} else {
 		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
