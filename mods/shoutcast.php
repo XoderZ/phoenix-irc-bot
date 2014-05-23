@@ -17,25 +17,16 @@ $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 if ($enabled == true) {
     function getNowPlaying($sc_url_ip, $sc_url_port)
     {
-        // This script is provided free of charge
-        // from http://streamfinder.com
-        $open = fsockopen($sc_url_ip, $sc_url_port, $errno, $errstr, '.5');
-        if ($open) {
-            fputs($open, "GET /7.html HTTP/1.1\nUser-Agent:Mozilla\n\n");
-            stream_set_timeout($open, '1');
-            $read = fread($open, 200);
-            $text = explode(",", $read);
-			print_r($text);
-            if ($text[6] == '' || $text[6] == '</body></html>') {
-            } else {
-                $msg = $text[6];
-            }
-			$text = str_replace('</body></html>', '', $msg); //Our own little edit
-        } else {
-            return false;
-        }
-        fclose($open);
-        return $text;
+        $options = stream_context_create(array(
+            'http' => array(
+                'timeout' => 500,
+                'method' => 'GET',
+                'header' => 'Accept-language: en\r\n' . 'User-Agent: Phoenix IRC Bot - +https://github.com/XoderZ/phoenix-irc-bot\r\n'
+            )
+        ));
+        $latest  = file_get_contents("http://" . $sc_url_ip . ":" . $sc_url_port . "/", false, $options);
+		print_r($latest);
+        return $latest;
     }
     
     echo "Shoutcast module started...\r\n";
@@ -47,24 +38,24 @@ if ($enabled == true) {
         //Parent
     } else {
         //Child
-		$current = "Nothing";
+        $current = "Nothing";
         $last    = "Nothing";
-		$x = 0;
+        $x       = 0;
         $IRC->send("PRIVMSG " . $channel . " :Shoutcast plugin loaded...\r\n");
         $IRC->send("PRIVMSG " . $channel . " :Sending songs from " . $sc_name . "\r\n");
         
         while (1) {
             if ($current !== $last) {
-				$last = $current;
+                $last = $current;
                 $IRC->send("PRIVMSG " . $channel . " :\x02\x033NP: " . $current . "\r\n");
             }
-			if($x == 10) {
-				$x = 0;
-				$current = getNowPlaying($sc_url_ip, $sc_url_port);
-			} else {
-				$x++;
-				sleep(1);
-			}
+            if ($x == 10) {
+                $x       = 0;
+                $current = getNowPlaying($sc_url_ip, $sc_url_port);
+            } else {
+                $x++;
+                sleep(1);
+            }
         }
     }
 }
