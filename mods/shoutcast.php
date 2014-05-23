@@ -20,7 +20,6 @@ if ($enabled == true) {
         $options = stream_context_create(array(
             'http' => array(
                 'timeout' => 500,
-                'method' => 'GET',
                 'header' => 'Accept-language: en\r\n' . 'User-Agent: Phoenix IRC Bot - +https://github.com/XoderZ/phoenix-irc-bot\r\n'
             )
         ));
