@@ -47,8 +47,9 @@ if ($enabled == true) {
         //Parent
     } else {
         //Child
-        $current = getNowPlaying($sc_url_ip, $sc_url_port);
+		$current = "Nothing";
         $last    = "Nothing";
+		$x = 0;
         $IRC->send("PRIVMSG " . $channel . " :Shoutcast plugin loaded...\r\n");
         $IRC->send("PRIVMSG " . $channel . " :Sending songs from " . $sc_name . "\r\n");
         
@@ -57,6 +58,13 @@ if ($enabled == true) {
 				$last = $current;
                 $IRC->send("PRIVMSG " . $channel . " :\x02\x033NP: " . $current . "\r\n");
             }
+			if($x == 10) {
+				$x = 0;
+				$current = getNowPlaying($sc_url_ip, $sc_url_port);
+			} else {
+				$x++;
+				sleep(1);
+			}
         }
     }
 }
