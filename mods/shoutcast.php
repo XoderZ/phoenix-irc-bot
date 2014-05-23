@@ -30,7 +30,7 @@ if ($enabled == true) {
             } else {
                 $msg = $text[6];
             }
-            $text = $msg;
+			$text = str_replace('</body></html>', '', $msg); //Our own little edit
         } else {
             return false;
         }
