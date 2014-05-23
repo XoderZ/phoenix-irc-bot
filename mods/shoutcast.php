@@ -26,7 +26,6 @@ if ($enabled == true) {
             $read = fread($open, 200);
             $text = explode(",", $read);
             if ($text[6] == '' || $text[6] == '</body></html>') {
-                $msg = ' live stream ';
             } else {
                 $msg = $text[6];
             }
@@ -61,9 +60,6 @@ if ($enabled == true) {
 			if($x == 10) {
 				$x = 0;
 				$current = getNowPlaying($sc_url_ip, $sc_url_port);
-				if($current == "live stream ") {
-					$current = $last;
-				}
 			} else {
 				$x++;
 				sleep(1);
