@@ -61,6 +61,9 @@ if ($enabled == true) {
 			if($x == 10) {
 				$x = 0;
 				$current = getNowPlaying($sc_url_ip, $sc_url_port);
+				if($current == "live stream ") {
+					$current = $last;
+				}
 			} else {
 				$x++;
 				sleep(1);
