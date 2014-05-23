@@ -58,6 +58,7 @@ if (strpos($IRC->buffer, $prefix . "raw")) {
 if (strpos($IRC->buffer, $prefix . "eval")) {
 	$IRC->parseData($IRC->buffer, $prefix . "eval");
 	if (in_array($IRC->host, $admins)) {
+		print_r($IRC->args);
 		$eval = eval($IRC->args);
 		print_r($eval);
 		print_r($IRC->args);
