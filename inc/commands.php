@@ -84,5 +84,13 @@ if (strpos($IRC->buffer, $prefix . "part")) {
 	}
 }
 
-
+if (strpos($IRC->buffer, $prefix . "kb")) {
+	$IRC->parseData($IRC->buffer, $prefix . "kb");
+	if (in_array($IRC->host, $admins)) {
+		$str = substr($IRC->args, 1);
+		$IRC->send("WHOIS ".$str."\r\n");
+	} else {
+		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+	}
+}
 ?>
