@@ -29,31 +29,30 @@ class IRC
 {
 
     //Core
-    public function connect($socketserver, $serverport)
-    {
-        $this->connection = @fsockopen($socketserver, $serverport, $errno, $errstr, 2);
-        echo $errstr;
-    }
-    public function getData()
-    {
-        $this->buffer = fgets($this->connection, 1024);
-    }
-    public function send($cmd)
-    {
-        @fwrite($this->connection, $cmd, strlen($cmd)); //sends the command to the server
-        echo "[SEND] $cmd"; //displays it on the screen
-    }
-
+	public function connect($socketserver, $serverport)
+	{
+		$this->connection = @fsockopen($socketserver, $serverport, $errno, $errstr, 2);
+		echo $errstr;
+	}
+	public function getData()
+	{
+		$this->buffer = fgets($this->connection, 1024);
+	}
+	public function send($cmd)
+	{
+		@fwrite($this->connection, $cmd, strlen($cmd)); //sends the command to the server
+		echo "[SEND] $cmd"; //displays it on the screen
+	}
 
 	//Commands core
-    public function parseData($data, $cmd)
-    {
-	 preg_match("/^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$/", $data, $this->parsedData);
-	 $this->host = $this->parsedData[1];
-	 $this->channel = $this->parsedData[3];
-	 $this->cmd = $cmd;
-	 $explode = explode($cmd, $this->parsedData[4]);
-	 $this->args = $explode[1];
-	 }
+	public function parseData($data, $cmd)
+	{
+		preg_match("/^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$/", $data, $this->parsedData);
+		$this->host = $this->parsedData[1];
+		$this->channel = $this->parsedData[3];
+		$this->cmd = $cmd;
+		$explode = explode($cmd, $this->parsedData[4]);
+		$this->args = $explode[1];
+	}
 }
 ?>

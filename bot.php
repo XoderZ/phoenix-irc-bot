@@ -12,6 +12,10 @@ if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to ad
 if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without this :(\r\n"); }
 if (!file_exists("inc/commands.php")) { die("You need your commands :(\r\n"); }
 
+// pcntl_signal(SIGTERM, "sig_handler");
+// pcntl_signal(SIGHUP,  "sig_handler");
+// pcntl_signal(SIGUSR1, "sig_handler");
+
 $debug = true; // Debug for developers developers developers developers (OPTIONAL)
 if ($debug == true) {
 	error_reporting(E_ALL);
@@ -66,6 +70,7 @@ while (1 == 1) {
                 }
                 if (isset($channels)) {
                     $IRC->send("JOIN " . $channels . "\r\n");
+					foreach (glob("mods/*.php") as $mods) { include $mods; }
                 }
             }
 

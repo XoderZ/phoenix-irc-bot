@@ -21,4 +21,13 @@ $port		= "6667"; // Port (REQUIRED)
 $channels	= "#xBytez"; // Channels to join (OPTIONAL)
 
 $version	= "1.0";
+
+
+//Module configs
+
+//Shoutcast config
+$sc_enabled	= false; //Is this module enabled on the bot? False = No, True = Yes
+$sc_ip		= "69.46.88.20"; //Can also be a domain
+$sc_port	= "80"; // Port
+$sc_channel	= "#xBytez"; //Channel to send Shoutcast data to.
 ?>

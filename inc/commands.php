@@ -9,7 +9,7 @@
 
 
 //You can edit this without restarting the bot due to bot.php constantly refreshing the file.
-
+//Please note: This file is not multi-threaded so for big processes that will take some time, please consider making a module for it.
 
 global $IRC;
 
@@ -83,6 +83,4 @@ if (strpos($IRC->buffer, $prefix . "part")) {
 		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
 	}
 }
-
-
 ?>
