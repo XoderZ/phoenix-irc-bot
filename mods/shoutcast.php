@@ -6,7 +6,7 @@ global $IRC;
 //Change these
 $enabled     = true; //Is this module enabled on the bot? False = No, True = Yes
 $ip   = "69.46.88.20"; //Can also be a domain
-$part = "80"; // Port
+$port = "80"; // Port
 $sc_name     = "idobi Radio"; //Radio's name
 $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 //END
@@ -15,7 +15,7 @@ $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 //Do not touch unless you know what you're doing
 
 if ($enabled == true) {
-    function getNowPlaying($sc_url_ip, $sc_url_port)
+    function getNowPlaying($ip, $port)
     {
         $fp = @fsockopen($ip, $port, $errno, $errstr, 1);
         fputs($fp, "GET / HTTP/1.0\r\nUser-Agent: Phoenix IRC Bot\r\n\r\n");
@@ -51,7 +51,7 @@ if ($enabled == true) {
             }
             if ($x == 10) {
                 $x       = 0;
-                $current = getNowPlaying($sc_url_ip, $sc_url_port);
+                $current = getNowPlaying($ip, $port);
             } else {
                 $x++;
                 sleep(1);
