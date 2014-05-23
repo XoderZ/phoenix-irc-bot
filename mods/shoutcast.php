@@ -25,6 +25,7 @@ if ($enabled == true) {
             stream_set_timeout($open, '1');
             $read = fread($open, 200);
             $text = explode(",", $read);
+			print_r($text);
             if ($text[6] == '' || $text[6] == '</body></html>') {
             } else {
                 $msg = $text[6];
@@ -60,9 +61,6 @@ if ($enabled == true) {
 			if($x == 10) {
 				$x = 0;
 				$current = getNowPlaying($sc_url_ip, $sc_url_port);
-				if(empty($current)) {
-					$current = $last;
-				}
 			} else {
 				$x++;
 				sleep(1);
