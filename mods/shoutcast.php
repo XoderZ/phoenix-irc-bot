@@ -16,6 +16,7 @@ $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 if ($enabled == true) {
     function getNowPlaying($sc_ip, $sc_port)
     {
+		ini_set("user_agent", "Mozilla/5.0 (compatible; MSIE 6.0; Phoenix IRC Bot +https://github.com/XoderZ/phoenix-irc-bot)");
         $fp = file_get_contents("http://".$sc_ip.":".$sc_port."/");
         $fp  = str_replace('</body></html>', "", $fp);
         echo $fp;
