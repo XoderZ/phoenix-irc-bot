@@ -31,7 +31,7 @@ if ($enabled == true) {
         while (1) {
             if ($current !== $last) {
                 $last = $current;
-                $IRC->send("PRIVMSG " . $channel . " :\x02\x033NP: " . $current . "\r\n");
+                $IRC->send("PRIVMSG " . $channel . " :[Shoutcast] \x02\x033NP\x02: " . $current . "\r\n");
             }
             if ($x == 10) {
                 $x       = 0;
