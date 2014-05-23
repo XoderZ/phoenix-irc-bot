@@ -3,14 +3,6 @@
 //Shoutcast module created by TheEpTic & xBytez
 global $IRC;
 
-//Change these
-$enabled     = true; //Is this module enabled on the bot? False = No, True = Yes
-$ip   = "69.46.88.20"; //Can also be a domain
-$port = "80"; // Port
-$channel     = "#xBytez"; //Channel to send Shoutcast data to.
-//END
-
-
 //Do not touch unless you know what you're doing
 
 if ($enabled == true) {
