@@ -17,8 +17,10 @@ if($enabled == true) {
 		//Parent
 	} else {
 		//Child
-		sleep(1);
-		$IRC->send("PRIVMSG $channel :Hi bby\r\n");
+		while(1) {
+			sleep(1);
+			$IRC->send("PRIVMSG $channel :Hi bby\r\n");
+		}
 	}
 }
 ?>
