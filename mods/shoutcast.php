@@ -5,9 +5,9 @@ global $IRC;
 
 //Change these
 $enabled     = true; //Is this module enabled on the bot? False = No, True = Yes
-$sc_url_ip   = "69.46.88.20";
-$sc_url_port = "80";
-$sc_name     = "idobi Radio";
+$ip   = "69.46.88.20"; //Can also be a domain
+$part = "80"; // Port
+$sc_name     = "idobi Radio"; //Radio's name
 $channel     = "#xBytez"; //Channel to send Shoutcast data to.
 //END
 
