@@ -19,7 +19,7 @@ if ($enabled == true) {
     {
         $fp = @fsockopen($ip, $port, $errno, $errstr, 1);
         fputs($fp, "GET / HTTP/1.0\r\nUser-Agent: Phoenix IRC Bot\r\n\r\n");
-        $info  = str_replace('</body></html>', "", $info);
+        $info  = str_replace('</body></html>', "", $fp);
         $split = explode(',', $info);
         if (empty($split[6])) {
         } else {
