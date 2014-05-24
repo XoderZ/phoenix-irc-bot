@@ -3,16 +3,9 @@
 //Basic Phoenix IRC bot module
 global $IRC;
 
-//Change these
-$enabled = true; //Is this module enabled on the bot? False = No, True = Yes
-$channel = "#xBytez"; //Channel to send example data data to.
-//END
-
-
 //Do not touch unless you know what you're doing
 
-if($enabled == true) {
-	echo "[MODULES] Basic module started...\r\n";
+if($module_enabled == true) {
 	$pid = pcntl_fork();
 	if($pid == -1) {
 		echo "Forking for basic module failed...\r\n";
@@ -21,7 +14,7 @@ if($enabled == true) {
 		//Parent
 	} else {
 		//Child
-		$IRC->send("PRIVMSG ".$channel." :HEY I AM A MODULE\r\n");
+		$IRC->send("PRIVMSG ".$module_channel." :HEY I AM A MODULE\r\n");
 	}
 }
 ?>
