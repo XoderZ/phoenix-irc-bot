@@ -14,7 +14,7 @@ if ($tail_enabled == true) {
         //Parent
     } else {
         //Child
-        function follow($file)
+        function follow($file, $channel)
         {
             $size = 0;
             while (true) {
@@ -29,14 +29,14 @@ if ($tail_enabled == true) {
                 fseek($fh, $size);
                 
                 while ($d = fgets($fh)) {
-                    $IRC->send("PRIVMSG " . $tail_channel . " :[" . $file . "]" . $d . "\r\n");
+                    $IRC->send("PRIVMSG " . $channel . " :[" . $file . "]" . $d . "\r\n");
                 }
                 
                 fclose($fh);
                 $size = $currentSize;
             }
         }
-        follow($tail_file);
+        follow($tail_file, $tail_channel);
     }
 }
 ?>
