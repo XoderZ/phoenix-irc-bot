@@ -14,7 +14,7 @@ if ($tail_enabled == true) {
         //Parent
     } else {
         //Child
-        $size = 0;
+        $size = filesize($tail_file);
         while (true) {
             clearstatcache();
             $currentSize = filesize($tail_file);
