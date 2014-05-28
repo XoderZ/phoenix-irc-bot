@@ -51,7 +51,7 @@ class IRC
 		$this->host = $this->parsedData[1];
 		$this->rawCode = $this->parsedData[2];
 		$this->channel = $this->parsedData[3];
-		if (isset($cmd)) {
+		if (isset($cmd) && $cmd != "") {
 			$this->cmd = $cmd;
 			$explode = explode($cmd, $this->parsedData[4]);
 			$this->args = $explode[1];
