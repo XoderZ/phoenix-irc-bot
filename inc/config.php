@@ -32,7 +32,7 @@ $sc_channel	= "#phoenix-irc-bot"; //Channel to send Shoutcast data to.
 
 //Tail config
 $tail_enabled = true;
-$tail_file = "/root/test.txt";
+$tail_file = "tail.txt";
 $tail_channel = "#phoenix-irc-bot";
 //END
 ?>
