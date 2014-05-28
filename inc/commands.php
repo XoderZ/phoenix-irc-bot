@@ -65,8 +65,8 @@ if (strpos($IRC->buffer, $prefix . "eval")) {
 		if (in_array($IRC->host, $admins)) {
 			$str = substr($IRC->args, 1);
 			ob_start();
-			eval($str);
-			$eval = echo(ob_get_contents());
+			eval(echo($str));
+			$eval = ob_get_contents();
 			print_r("[DEBUG-EVAL] ".$eval."\r\n");
 			ob_end_clean();
 			foreach(preg_split("/((\r?\n)|(\r\n?))/", $eval) as $line){ $IRC->send("PRIVMSG ".$IRC->channel." :".$line."\r\n"); }
