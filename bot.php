@@ -23,7 +23,6 @@ include("inc/corefunctions.php");
 include("inc/admins.php");
 
 declare(ticks = 1);
-ignore_user_abort(true);
 pcntl_signal(SIGINT, "signal_handler");
 pcntl_signal(SIGTERM, "signal_handler");
 
