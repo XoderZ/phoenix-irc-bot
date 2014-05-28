@@ -20,6 +20,7 @@ $password	= ""; // Put server password (OPTIONAL)
 $port		= "6667"; // Port (REQUIRED)
 $channels	= "#phoenix-irc-bot"; // Channels to join (OPTIONAL)
 $version	= "1.2";
+
 //Module configs
 $dangerous_functions = true;
 
