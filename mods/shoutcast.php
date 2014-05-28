@@ -28,22 +28,23 @@ if ($sc_enabled == true) {
 			$current = "Nothing";
 			$last    = "Nothing";
 			$x       = 0;
-				if (strpos($IRC->buffer, "366 ".$nickname." ".$sc_channel)) { //366 is the raw number of a successful /NAMES (join command)
-					$IRC->send("PRIVMSG ".$sc_channel." :[Shoutcast] Module loaded.\r\n");
-					while (1) {
-						if ($current !== $last) {
-							$last = $current;
-							$IRC->send("PRIVMSG " . $sc_channel . " :[Shoutcast] \x02\x033NP\x02: " . $current . "\r\n");
-						}
-						if ($x == 10) {
-							$x       = 0;
-							$current = getNowPlaying($sc_ip, $sc_port);
-						} else {
-							$x++;
-							sleep(1);
-						}
+			$IRC->parseData($IRC->buffer);
+			if($IRC->rawData == '366' && $IRC->channel == $nickname." ".$channel) {
+				$IRC->send("PRIVMSG ".$sc_channel." :[Shoutcast] Module loaded.\r\n");
+				while (1) {
+					if ($current !== $last) {
+						$last = $current;
+						$IRC->send("PRIVMSG " . $sc_channel . " :[Shoutcast] \x02\x033NP\x02: " . $current . "\r\n");
+					}
+					if ($x == 10) {
+						$x       = 0;
+						$current = getNowPlaying($sc_ip, $sc_port);
+					} else {
+						$x++;
+						sleep(1);
 					}
 				}
+			}
 		}
 	}
 }

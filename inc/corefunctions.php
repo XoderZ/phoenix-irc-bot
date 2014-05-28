@@ -49,6 +49,7 @@ class IRC
 	{
 		preg_match("/^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$/", $data, $this->parsedData);
 		$this->host = $this->parsedData[1];
+		$this->rawCode = $this->parsedData[2];
 		$this->channel = $this->parsedData[3];
 		if (isset($cmd)) {
 			$this->cmd = $cmd;
