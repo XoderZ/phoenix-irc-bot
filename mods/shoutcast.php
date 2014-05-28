@@ -28,6 +28,7 @@ if ($sc_enabled == true) {
 			$current = "Nothing";
 			$last    = "Nothing";
 			$x       = 0;
+			sleep(4);
 			$IRC->parseData($IRC->buffer);
 			if($IRC->rawData == '366' && $IRC->channel == $nickname." ".$channel) {
 				$IRC->send("PRIVMSG ".$sc_channel." :[Shoutcast] Module loaded.\r\n");

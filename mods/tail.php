@@ -15,6 +15,7 @@ if ($tail_enabled == true) {
 			//Parent
 		} else {
 			//Child
+			sleep(4);
 			$IRC->parseData($IRC->buffer);
 			if($IRC->rawData == '366' && $IRC->channel == $nickname." ".$channel) {
 				if (!file_exists($tail_file)) { 
