@@ -29,7 +29,7 @@ if ($sc_enabled == true) {
 			$last    = "Nothing";
 			$x       = 0;
 			$IRC->parseData($IRC->buffer);
-			if($IRC->rawCode == '366' && $IRC->channel == $nickname." ".$channel) {
+			if($IRC->rawCode == '366' && $IRC-> == $nickname." ".$tail_channel) {
 				$IRC->send("PRIVMSG ".$sc_channel." :[Shoutcast] Module loaded.\r\n");
 				while (1) {
 					if ($current !== $last) {

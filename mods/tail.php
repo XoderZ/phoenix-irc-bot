@@ -16,7 +16,7 @@ if ($tail_enabled == true) {
 		} else {
 			//Child
 			$IRC->parseData($IRC->buffer);
-			if($IRC->rawCode == '366' && $IRC->channel == $nickname." ".$channel) {
+			if($IRC->rawCode == '366' && $IRC->channel == $nickname." ".$tail_channel) {
 				if (!file_exists($tail_file)) { 
 					echo("[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
 					$IRC->send("PRIVMSG ".$sc_channel." :[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
