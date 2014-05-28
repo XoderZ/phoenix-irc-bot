@@ -22,15 +22,6 @@ include("inc/config.php");
 include("inc/corefunctions.php");
 include("inc/admins.php");
 
-declare(ticks = 1);
-pcntl_signal(SIGINT, "signal_handler");
-pcntl_signal(SIGTERM, "signal_handler");
-
-$pid     = getmypid();
-$pidopen = fopen("pid", 'w');
-fwrite($pidopen, $pid);
-fclose($pidopen);
-
 echo "
 d8888b. db   db  .d88b.  d88888b d8b   db d888888b db    db 
 88  `8D 88   88 .8P  Y8. 88'     888o  88   `88'   `8b  d8' 
