@@ -16,33 +16,29 @@ if ($tail_enabled == true) {
 		} else {
 			//Child
 			$IRC->send("JOIN :".$tail_channel);
-			sleep(3);
-			$IRC->parseData($IRC->buffer);
-			if($IRC->rawCode == '366' && $IRC->channel == $nickname." ".$tail_channel) {
-				if (!file_exists($tail_file)) { 
-					echo("[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
-					$IRC->send("PRIVMSG ".$sc_channel." :[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
-				} else {
-					$IRC->send("PRIVMSG ".$tail_channel." :[Tail] Module loaded.\r\n");
-					$size = filesize($tail_file);
-					while (true) {
-						clearstatcache();
-						$currentSize = filesize($tail_file);
-						if ($size == $currentSize) {
-							usleep(100);
-							continue;
-						}
-						
-						$fh = fopen($tail_file, "r");
-						fseek($fh, $size);
-						
-						while ($d = fgets($fh)) {
-							$IRC->send("PRIVMSG " . $tail_channel . " :[" . $tail_file . "] " . $d . "\r\n");
-						}
-						
-						fclose($fh);
-						$size = $currentSize;
+			if (!file_exists($tail_file)) { 
+				echo("[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
+				$IRC->send("PRIVMSG ".$sc_channel." :[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
+			} else {
+				$IRC->send("PRIVMSG ".$tail_channel." :[Tail] Module loaded.\r\n");
+				$size = filesize($tail_file);
+				while (true) {
+					clearstatcache();
+					$currentSize = filesize($tail_file);
+					if ($size == $currentSize) {
+						usleep(100);
+						continue;
 					}
+					
+					$fh = fopen($tail_file, "r");
+					fseek($fh, $size);
+					
+					while ($d = fgets($fh)) {
+						$IRC->send("PRIVMSG " . $tail_channel . " :[" . $tail_file . "] " . $d . "\r\n");
+					}
+					
+					fclose($fh);
+					$size = $currentSize;
 				}
 			}
 		}

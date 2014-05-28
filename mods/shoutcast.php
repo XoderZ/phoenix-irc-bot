@@ -29,21 +29,18 @@ if ($sc_enabled == true) {
 			$last    = "Nothing";
 			$x       = 0;
 			$IRC->send("JOIN :".$sc_channel);
-			$IRC->parseData($IRC->buffer);
-			if($IRC->rawCode == '366' && $IRC->channel == $nickname." ".$sc_channel) {
-				$IRC->send("PRIVMSG ".$sc_channel." :[Shoutcast] Module loaded.\r\n");
-				while (1) {
-					if ($current !== $last) {
-						$last = $current;
-						$IRC->send("PRIVMSG " . $sc_channel . " :[Shoutcast] \x02\x033NP\x02: " . $current . "\r\n");
-					}
-					if ($x == 10) {
-						$x       = 0;
-						$current = getNowPlaying($sc_ip, $sc_port);
-					} else {
-						$x++;
-						sleep(1);
-					}
+			$IRC->send("PRIVMSG ".$sc_channel." :[Shoutcast] Module loaded.\r\n");
+			while (1) {
+				if ($current !== $last) {
+					$last = $current;
+					$IRC->send("PRIVMSG " . $sc_channel . " :[Shoutcast] \x02\x033NP\x02: " . $current . "\r\n");
+				}
+				if ($x == 10) {
+					$x       = 0;
+					$current = getNowPlaying($sc_ip, $sc_port);
+				} else {
+					$x++;
+					sleep(1);
 				}
 			}
 		}
