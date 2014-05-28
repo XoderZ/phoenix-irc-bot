@@ -70,7 +70,7 @@ while (1 == 1) {
                     $IRC->send("PRIVMSG NickServ :identify " . $nickserv . "\r\n");
                 }
                 if (isset($channels)) {
-                    $IRC->send("JOIN " . $channels . "\r\n");
+                    $IRC->send("JOIN :" . $channels . "\r\n");
 					foreach (glob("mods/*.php") as $mods) {
 							include $mods;
 					}
