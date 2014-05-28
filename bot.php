@@ -13,6 +13,7 @@ if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without
 if (!file_exists("inc/commands.php")) { die("You need your commands :(\r\n"); }
 if (strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') { if (posix_getuid() == 0) { echo("!!!!!!! RUNNING AN IRC BOT AS ROOT IS DANGEROUS - PLEASE CREATE A DIFFERENT USER, WAIT 3 SECONDS IF YOU ARE SURE YOU WANT TO CONTINUE !!!!!!!\r\n"); sleep(3); } }
 
+declare(ticks=1);
 pcntl_signal(SIGTERM, "signal_handler");
 pcntl_signal(SIGINT, "signal_handler");
 pcntl_signal(SIGKILL, "signal_handler");
