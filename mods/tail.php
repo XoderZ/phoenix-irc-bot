@@ -15,6 +15,7 @@ if ($tail_enabled == true) {
 			//Parent
 		} else {
 			//Child
+			echo("366 ".$nickname." ".$tail_channel);
 			if (strpos($IRC->buffer, "366 ".$nickname." ".$tail_channel)) { //366 is the raw number of a successful /NAMES (join command)
 				if (!file_exists($tail_file)) { 
 					echo("[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
