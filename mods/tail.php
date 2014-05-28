@@ -15,7 +15,7 @@ if ($tail_enabled == true) {
     } else {
         //Child
 		if (!file_exists($tail_file)) { 
-			echo("File to tail does NOT exist.");
+			echo("File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file);
 		} else {
 			$size = filesize($tail_file);
 			while (true) {
