@@ -41,6 +41,12 @@ if (strpos($IRC->buffer, $prefix . "restart")) {
 	}
 }
 
+if (strpos($IRC->buffer, $prefix . "channel")) {
+		$IRC->parseData($IRC->buffer, $prefix . "channel");
+        $IRC->send("PRIVMSG ".$IRC->channel." :".$IRC->channel."\r\n");
+}
+// DANGEROUS COMMANDS, SECURITY RISK IF ADMINS AREN'T SET UP PROPERLY
+
 if (strpos($IRC->buffer, $prefix . "raw")) {
 	$IRC->parseData($IRC->buffer, $prefix . "raw");
 	if (in_array($IRC->host, $admins)) {
@@ -49,10 +55,17 @@ if (strpos($IRC->buffer, $prefix . "raw")) {
 		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
 	}
 }
-
-if (strpos($IRC->buffer, $prefix . "channel")) {
-		$IRC->parseData($IRC->buffer, $prefix . "channel");
-        $IRC->send("PRIVMSG ".$IRC->channel." :".$IRC->channel."\r\n");
+if (strpos($IRC->buffer, $prefix . "eval")) {
+	$IRC->parseData($IRC->buffer, $prefix . "eval");
+	if (in_array($IRC->host, $admins)) {
+		print_r($IRC->args);
+		$eval = eval($IRC->args);
+		print_r($eval);
+		print_r($IRC->args);
+		$IRC->send("PRIVMSG ".$IRC->channel." :".$eval."\r\n");
+	} else {
+		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+	}
 }
 
 //SAY, JOIN AND PART
