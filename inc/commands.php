@@ -65,7 +65,7 @@ if (strpos($IRC->buffer, $prefix . "eval")) {
 		if (in_array($IRC->host, $admins)) {
 			$str = substr($IRC->args, 1);
 			ob_start();
-			eval("echo($str)");
+			eval($str);
 			$eval = ob_get_contents();
 			print_r("[DEBUG-EVAL] ".$eval."\r\n");
 			ob_end_clean();
