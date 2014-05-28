@@ -18,7 +18,7 @@ if ($tail_enabled == true) {
 			$IRC->send("JOIN :".$tail_channel);
 			if (!file_exists($tail_file)) { 
 				echo("[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
-				$IRC->send("PRIVMSG ".$sc_channel." :[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
+				$IRC->send("PRIVMSG ".$tail_channel." :[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
 			} else {
 				$IRC->send("PRIVMSG ".$tail_channel." :[Tail] Module loaded.\r\n");
 				$size = filesize($tail_file);
