@@ -15,7 +15,7 @@ $prefix      = "!"; //Command prefix (REQUIRED)
 $nickserv	 = ""; // NickServ password (OPTIONAL)
 
 //IRC Details
-$ircserver	= "irc.afraidirc.net"; //  RC server you want to connect to. (REQUIRED)
+$ircserver	= "192.81.220.223"; //  RC server you want to connect to. (REQUIRED)
 $password	= ""; // Put server password (OPTIONAL)
 $port		= "6667"; // Port (REQUIRED)
 $channels	= "#xBytez"; // Channels to join (OPTIONAL)
