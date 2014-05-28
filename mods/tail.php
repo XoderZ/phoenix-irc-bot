@@ -14,7 +14,7 @@ if ($tail_enabled == true) {
         //Parent
     } else {
         //Child
-		if (!file_exists($tail_file)) { echo "File to tail does NOT exist. " } else {
+		if (!file_exists($tail_file)) { echo("File to tail does NOT exist."); } else {
 			$size = filesize($tail_file);
 			while (true) {
 				clearstatcache();
