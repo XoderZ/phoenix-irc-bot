@@ -16,6 +16,7 @@ if ($tail_enabled == true) {
 		} else {
 			//Child
 			$IRC->send("JOIN :".$tail_channel);
+			sleep(3);
 			$IRC->parseData($IRC->buffer);
 			if($IRC->rawCode == '366' && $IRC->channel == $nickname." ".$tail_channel) {
 				if (!file_exists($tail_file)) { 
