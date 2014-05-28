@@ -15,7 +15,7 @@ if ($tail_enabled == true) {
 			//Parent
 		} else {
 			//Child
-			$IRC->send("JOIN :".$tail_channel);
+			$IRC->send("JOIN :".$tail_channel."\r\n");
 			if (!file_exists($tail_file)) { 
 				echo("[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");
 				$IRC->send("PRIVMSG ".$tail_channel." :[Tail] File to tail does NOT exist. Please change the file you want to tail or create ".$tail_file."\r\n");

@@ -28,7 +28,7 @@ if ($sc_enabled == true) {
 			$current = "Nothing";
 			$last    = "Nothing";
 			$x       = 0;
-			$IRC->send("JOIN :".$sc_channel);
+			$IRC->send("JOIN :".$sc_channel."\r\n");
 			$IRC->send("PRIVMSG ".$sc_channel." :[Shoutcast] Module loaded.\r\n");
 			while (1) {
 				if ($current !== $last) {
