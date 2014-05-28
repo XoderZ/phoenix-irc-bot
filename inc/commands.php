@@ -49,22 +49,32 @@ if (strpos($IRC->buffer, $prefix . "channel")) {
 
 if (strpos($IRC->buffer, $prefix . "raw")) {
 	$IRC->parseData($IRC->buffer, $prefix . "raw");
-	if (in_array($IRC->host, $admins)) {
-		$IRC->send($IRC->args."\r\n");
+	if($dangerous_functions == true) {
+		if (in_array($IRC->host, $admins)) {
+			$IRC->send($IRC->args."\r\n");
+		} else {
+			$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+		}
 	} else {
-		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+		$IRC->send("PRIVMSG ".$IRC->channel." :[ERROR] Dangerous functions are DISABLED, check your config if you want to enable them.");
 	}
 }
 if (strpos($IRC->buffer, $prefix . "eval")) {
 	$IRC->parseData($IRC->buffer, $prefix . "eval");
-	if (in_array($IRC->host, $admins)) {
-		print_r($IRC->args);
-		$eval = eval($IRC->args);
-		print_r($eval);
-		print_r($IRC->args);
-		$IRC->send("PRIVMSG ".$IRC->channel." :".$eval."\r\n");
+	if($dangerous_functions == true) {
+		if (in_array($IRC->host, $admins)) {
+			$str = substr($IRC->args, 1);
+			ob_start();
+			eval($str);
+			$eval = ob_get_contents();
+			print_r("[DEBUG-EVAL] ".$eval."\r\n");
+			ob_end_clean();
+			foreach(preg_split("/((\r?\n)|(\r\n?))/", $eval) as $line){ $IRC->send("PRIVMSG ".$IRC->channel." :".$line."\r\n"); }
+		} else {
+			$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+		}
 	} else {
-		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
+		$IRC->send("PRIVMSG ".$IRC->channel." :[ERROR] Dangerous functions are DISABLED, check your config if you want to enable them.");
 	}
 }
 
