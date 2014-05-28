@@ -11,7 +11,7 @@ if (!file_exists("inc/config.php")) { die("Please rename config.php.sample to co
 if (!file_exists("inc/admins.php")) { die("Please rename admins.php.sample to admins.php\r\n"); }
 if (!file_exists("inc/corefunctions.php")) { die("The bot won't function without this :(\r\n"); }
 if (!file_exists("inc/commands.php")) { die("You need your commands :(\r\n"); }
-if (get_current_user() == "root") { echo("!!!!!!! RUNNING AN IRC BOT AS ROOT IS DANGEROUS - PLEASE CREATE A DIFFERENT USER, WAIT 3 SECONDS IF YOU ARE SURE YOU WANT TO CONTINUE !!!!!!!\r\n"); sleep(3); }
+if (strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') { if (posix_getuid() == 0) { echo("!!!!!!! RUNNING AN IRC BOT AS ROOT IS DANGEROUS - PLEASE CREATE A DIFFERENT USER, WAIT 3 SECONDS IF YOU ARE SURE YOU WANT TO CONTINUE !!!!!!!\r\n"); sleep(3); } }
 
 // pcntl_signal(SIGTERM, "sig_handler");
 // pcntl_signal(SIGHUP,  "sig_handler");
