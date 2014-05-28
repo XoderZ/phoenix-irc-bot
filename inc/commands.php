@@ -63,6 +63,7 @@ if (strpos($IRC->buffer, $prefix . "eval")) {
 	$IRC->parseData($IRC->buffer, $prefix . "eval");
 	if($dangerous_functions == true) {
 		if (in_array($IRC->host, $admins)) {
+			print_r("[DEBUG-EVAL-ARGS] ".$IRC->args."\r\n");
 			ob_start();
 			eval($IRC->args);
 			$eval = ob_get_contents();
