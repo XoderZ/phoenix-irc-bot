@@ -19,11 +19,9 @@ $ircserver	= "irc.afraidirc.net"; //  RC server you want to connect to. (REQUIRE
 $password	= ""; // Put server password (OPTIONAL)
 $port		= "6667"; // Port (REQUIRED)
 $channels	= "#xBytez"; // Channels to join (OPTIONAL)
-
 $version	= "1.0";
-
-
 //Module configs
+$dangerous_functions = true;
 
 //Shoutcast config - This module has been tested only on 1.9.8
 $sc_enabled	= false; //Is this module enabled on the bot? False = No, True = Yes
