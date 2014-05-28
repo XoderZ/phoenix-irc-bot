@@ -57,5 +57,22 @@ class IRC
 			$this->args = $explode[1];
 		}
 	}
+
+	function signal_handler($signal) {
+        switch($signal) {
+            case SIGTERM:
+                print "Caught SIGTERM\n";
+				unlink('pid');
+                exit;
+            case SIGKILL:
+                print "Caught SIGKILL\n";
+				unlink('pid');
+                exit;
+            case SIGINT:
+                print "Caught SIGINT\n";
+				unlink('pid');
+                exit;
+        }
+    }
 }
 ?>
