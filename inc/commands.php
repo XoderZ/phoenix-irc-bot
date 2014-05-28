@@ -64,7 +64,7 @@ if (strpos($IRC->buffer, $prefix . "eval")) {
 	if($dangerous_functions == true) {
 		if (in_array($IRC->host, $admins)) {
 			ob_start();
-			eval($args);
+			eval($IRC->args);
 			$eval = ob_get_contents();
 			ob_end_clean();
 			$IRC->send("PRIVMSG ".$IRC->channel." :".$eval."\r\n");
