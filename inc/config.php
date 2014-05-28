@@ -18,7 +18,7 @@ $nickserv	 = ""; // NickServ password (OPTIONAL)
 $ircserver	= "irc.afraidirc.net"; //  RC server you want to connect to. (REQUIRED)
 $password	= ""; // Put server password (OPTIONAL)
 $port		= "6667"; // Port (REQUIRED)
-$channels	= "#jack"; // Channels to join (OPTIONAL)
+$channels	= "#xBytez"; // Channels to join (OPTIONAL)
 
 $version	= "1.0";
 
@@ -35,6 +35,6 @@ $sc_channel	= "#jack"; //Channel to send Shoutcast data to.
 //Tail config
 $tail_enabled = true;
 $tail_file = "/root/test.txt";
-$tail_channel = "#jack";
+$tail_channel = "#xBytez";
 //END
 ?>

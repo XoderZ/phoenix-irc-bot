@@ -14,25 +14,27 @@ if ($tail_enabled == true) {
         //Parent
     } else {
         //Child
-        $size = filesize($tail_file);
-        while (true) {
-            clearstatcache();
-            $currentSize = filesize($tail_file);
-            if ($size == $currentSize) {
-                usleep(100);
-                continue;
-            }
-            
-            $fh = fopen($tail_file, "r");
-            fseek($fh, $size);
-            
-            while ($d = fgets($fh)) {
-                $IRC->send("PRIVMSG " . $tail_channel . " :[" . $tail_file . "] " . $d . "\r\n");
-            }
-            
-            fclose($fh);
-            $size = $currentSize;
-        }
+		if (!file_exists($tail_file)) { echo "File to tail does NOT exist. " } else {
+			$size = filesize($tail_file);
+			while (true) {
+				clearstatcache();
+				$currentSize = filesize($tail_file);
+				if ($size == $currentSize) {
+					usleep(100);
+					continue;
+				}
+				
+				$fh = fopen($tail_file, "r");
+				fseek($fh, $size);
+				
+				while ($d = fgets($fh)) {
+					$IRC->send("PRIVMSG " . $tail_channel . " :[" . $tail_file . "] " . $d . "\r\n");
+				}
+				
+				fclose($fh);
+				$size = $currentSize;
+			}
+		}
     }
 }
 ?>
