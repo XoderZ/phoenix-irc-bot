@@ -66,6 +66,7 @@ if (strpos($IRC->buffer, $prefix . "eval")) {
 			ob_start();
 			eval($IRC->args);
 			$eval = ob_get_contents();
+			print_r($eval);
 			ob_end_clean();
 			$IRC->send("PRIVMSG ".$IRC->channel." :".$eval."\r\n");
 		} else {
