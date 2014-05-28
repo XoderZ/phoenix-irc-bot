@@ -15,10 +15,10 @@ if ($sc_enabled == true) {
 		return $fp[0]; // Diaplays song
     }
     
-    echo "Shoutcast module started...\r\n";
+    echo "[MODULES] Shoutcast module started...\r\n";
     $pid = pcntl_fork();
     if ($pid == -1) {
-        echo "Forking for Shoutcast failed...\r\n";
+        echo "[MODULES] Forking for Shoutcast failed...\r\n";
         exit(1);
     } else if ($pid) {
         //Parent
@@ -27,20 +27,22 @@ if ($sc_enabled == true) {
         $current = "Nothing";
         $last    = "Nothing";
         $x       = 0;
-
-        while (1) {
-            if ($current !== $last) {
-                $last = $current;
-                $IRC->send("PRIVMSG " . $sc_channel . " :[Shoutcast] \x02\x033NP\x02: " . $current . "\r\n");
+            if (strpos($IRC->buffer, "366 ".$nickname." ".$sc_channel)) { //366 is the raw number of a successful /NAMES (join command)
+				$IRC->send("PRIVMSG ".$sc_channel." :[Shoutcast] Module loaded.\r\n");
+				while (1) {
+					if ($current !== $last) {
+						$last = $current;
+						$IRC->send("PRIVMSG " . $sc_channel . " :[Shoutcast] \x02\x033NP\x02: " . $current . "\r\n");
+					}
+					if ($x == 10) {
+						$x       = 0;
+						$current = getNowPlaying($sc_ip, $sc_port);
+					} else {
+						$x++;
+						sleep(1);
+					}
+				}
             }
-            if ($x == 10) {
-                $x       = 0;
-                $current = getNowPlaying($sc_ip, $sc_port);
-            } else {
-                $x++;
-                sleep(1);
-            }
-        }
     }
 }
 ?>
