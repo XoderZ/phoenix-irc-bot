@@ -19,7 +19,7 @@ $ircserver	= "192.81.220.223"; //  RC server you want to connect to. (REQUIRED)
 $password	= ""; // Put server password (OPTIONAL)
 $port		= "6667"; // Port (REQUIRED)
 $channels	= "#phoenix-irc-bot"; // Channels to join (OPTIONAL)
-$version	= "1.0";
+$version	= "1.2";
 //Module configs
 $dangerous_functions = true;
 
