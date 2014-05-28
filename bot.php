@@ -63,6 +63,10 @@ while (1 == 1) {
             if ($debug == true) {
                 echo "[RECIEVE] " . $IRC->buffer . "\r\n";
             }
+			
+            if (strpos($IRC->buffer, "433")) {
+				$IRC->send("NICK ".$nickname."_\r\n");
+            }
 
             if (strpos($IRC->buffer, "376")) //376 is the message number of the MOTD for the server (The last thing displayed after a successful connection) 
                 {
