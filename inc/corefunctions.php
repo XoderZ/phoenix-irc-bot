@@ -58,7 +58,7 @@ class IRC
 		}
 	}
 }
-function signal_handler($signal) {
+public function signal_handler($signal) {
         switch($signal) {
             case SIGTERM:
                 print "Caught SIGTERM\n";
