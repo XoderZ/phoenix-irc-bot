@@ -64,10 +64,6 @@ class IRC
                 print "Caught SIGTERM\n";
 				unlink('pid');
                 exit;
-            case SIGKILL:
-                print "Caught SIGKILL\n";
-				unlink('pid');
-                exit;
             case SIGINT:
                 print "Caught SIGINT\n";
 				unlink('pid');
