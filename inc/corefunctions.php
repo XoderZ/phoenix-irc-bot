@@ -57,8 +57,8 @@ class IRC
 			$this->args = $explode[1];
 		}
 	}
-
-	function signal_handler($signal) {
+}
+function signal_handler($signal) {
         switch($signal) {
             case SIGTERM:
                 print "Caught SIGTERM\n";
@@ -69,6 +69,5 @@ class IRC
 				unlink('pid');
                 exit;
         }
-    }
 }
 ?>
