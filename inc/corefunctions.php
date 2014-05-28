@@ -45,7 +45,7 @@ class IRC
 	}
 
 	//Commands core
-	public function parseData($data, $cmd)
+	public function parseData($data, $cmd="")
 	{
 		preg_match("/^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$/", $data, $this->parsedData);
 		$this->host = $this->parsedData[1];
