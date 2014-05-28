@@ -71,7 +71,9 @@ while (1 == 1) {
                 }
                 if (isset($channels)) {
                     $IRC->send("JOIN " . $channels . "\r\n");
-					foreach (glob("mods/*.php") as $mods) { include $mods; }
+					foreach (glob("mods/*.php") as $mods) {
+							include $mods;
+					}
                 }
             }
 
