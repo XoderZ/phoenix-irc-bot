@@ -22,17 +22,17 @@ $channels	= "#phoenix-irc-bot"; // Channels to join (OPTIONAL)
 $version	= "1.2";
 
 //Module configs
-$dangerous_functions = true;
+$dangerous_functions = false;
 
 //Shoutcast config - This module has been tested only on 1.9.8
-$sc_enabled	= true; //Is this module enabled on the bot? False = No, True = Yes
+$sc_enabled	= false; //Is this module enabled on the bot? False = No, True = Yes
 $sc_ip		= "69.46.88.20"; //Can also be a domain
 $sc_port	= "80"; // Port
 $sc_channel	= "#phoenix-irc-bot"; //Channel to send Shoutcast data to.
 //END
 
 //Tail config
-$tail_enabled = true;
+$tail_enabled = false;
 $tail_file = "tail.txt";
 $tail_channel = "#phoenix-irc-bot";
 //END
