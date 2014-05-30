@@ -1,10 +1,5 @@
 <?php
-
-<<<<<<< HEAD
-//Shoutcast module created by TheEpTic & xBytez - This module has been tested only on shoutcast 1.9.8
-=======
 //Shoutcast module created by TheEpTic & xBytez - This module has been tested only on Shoutcast 1.9.8
->>>>>>> 000a1ec8ea0e667d5f9772de18cef9d3af4d598f
 global $IRC;
 
 //Do not touch unless you know what you're doing
