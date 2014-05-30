@@ -82,7 +82,7 @@ while (1 == 1) {
                 }
                 if (isset($channels)) {
                     $IRC->send("JOIN :" . $channels . "\r\n");
-                    if ($mod_loaded == 0) {
+                    if ($mod_loaded == 0) { //Protects you from hell...
                         $mod_loaded = 1;
                         foreach (glob("mods/*.php") as $mods) {
                             include $mods;
