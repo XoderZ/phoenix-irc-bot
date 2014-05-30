@@ -38,6 +38,9 @@ d888888b d8888b.  .o88b.   d8888b.  .d88b.  d888888b
   .88.   88 `88. Y8b  d8   88   8D `8b  d8'    88    
 Y888888P 88   YD  `Y88P'   Y8888P'  `Y88P'     YP\r\n\r\n\r\n
 ";
+foreach (glob("mods/*.php") as $mods) {
+	include $mods;
+}
 while (1 == 1) {
 
     $IRC = new IRC();
@@ -66,9 +69,6 @@ while (1 == 1) {
                 }
                 if (isset($channels)) {
                     $IRC->send("JOIN :" . $channels . "\r\n");
-					foreach (glob("mods/*.php") as $mods) {
-							include $mods;
-					}
                 }
             }
 
