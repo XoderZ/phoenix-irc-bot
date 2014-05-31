@@ -36,4 +36,20 @@ $tail_enabled = false;
 $tail_file = "tail.txt";
 $tail_channel = "#phoenix-irc-bot";
 //END
+
+//Extrabot config
+$extrabot_enabled = true;
+$extrabot_nick = "Phoenix2";
+$extrabot_ident = "Phoenix2";
+$extrabot_realname = "Phoenix2";
+$extrabot_prefix = "!";
+$extrabot_nickserv = "";
+
+
+$extrabot_ircserver = "irc.afraidirc.net";
+$extrabot_password = "";
+$extrabot_port = "6667";
+$extrabot_channels = "#phoenix-irc-bot";
+//END
+
 ?>
