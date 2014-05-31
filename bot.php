@@ -31,6 +31,8 @@ if ($debug == true) {
     error_reporting(E_ALL);
 }
 
+$pid = getmypid();
+
 include("inc/config.php");
 include("inc/corefunctions.php");
 include("inc/admins.php");
