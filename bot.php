@@ -72,21 +72,25 @@ while (1 == 1) {
             }
             
             if (strpos($IRC->buffer, "433")) {
-				$IRC->parseData($IRC->buffer);
-				if ($IRC->rawCode == "433") { $IRC->send("NICK ".$nickname."_\r\n"); }
+                $IRC->parseData($IRC->buffer);
+                if ($IRC->rawCode == "433") {
+                    $IRC->send("NICK " . $nickname . "_\r\n");
+                }
             }
             
             if (strpos($IRC->buffer, "376")) //376 is the message number of the MOTD for the server (The last thing displayed after a successful connection) 
                 {
                 if (isset($nickserv) && !isset($authed)) {
                     $IRC->send("PRIVMSG NickServ :identify " . $nickserv . "\r\n");
-					$authed = 1;
+                    $authed = 1;
                 }
-                if (isset($channels) && !isset($mods_loaded)) {
+                if (isset($channels)) {
                     $IRC->send("JOIN :" . $channels . "\r\n");
-					foreach (glob("mods/*.php") as $mods) {
-						include $mods;
-					}
+                }
+                if (!isset($mods_loaded)) {
+                    foreach (glob("mods/*.php") as $mods) {
+                        include $mods;
+                    }
 					$mods_loaded = 1;
                 }
             }
