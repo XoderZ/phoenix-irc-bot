@@ -1,6 +1,6 @@
 <?php
 
-//Basic Phoenix IRC bot module
+//Extrabot module created by TheEpTic & xBytez
 global $IRC;
 
 //Do not touch unless you know what you're doing
