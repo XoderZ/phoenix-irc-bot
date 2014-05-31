@@ -72,7 +72,7 @@ while (1 == 1) {
             }
             
             if (strpos($IRC->buffer, "433")) {
-				$IRC->parsseData($IRC->buffer);
+				$IRC->parseData($IRC->buffer);
 				if ($IRC->rawCode == "433") { $IRC->send("NICK ".$nickname."_\r\n"); }
             }
             
