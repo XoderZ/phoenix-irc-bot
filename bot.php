@@ -31,8 +31,6 @@ if ($debug == true) {
     error_reporting(E_ALL);
 }
 
-$pid = getmypid();
-
 include("inc/config.php");
 include("inc/corefunctions.php");
 include("inc/admins.php");
@@ -55,6 +53,7 @@ Y888888P 88   YD  `Y88P'   Y8888P'  `Y88P'     YP\r\n\r\n\r\n
 ";
 
 $mod_loaded = 0;
+$pid = getmypid();
 
 while (true) {
     
