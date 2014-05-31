@@ -82,14 +82,12 @@ while (1 == 1) {
                     $IRC->send("PRIVMSG NickServ :identify " . $nickserv . "\r\n");
 					$authed = 1;
                 }
-                if (isset($channels) && !isset($loaded)) {
+                if (isset($channels) && !isset($mods_loaded)) {
                     $IRC->send("JOIN :" . $channels . "\r\n");
-                    if ($mod_loaded == 0) { //Protects you from hell...
-                        $mod_loaded = 1;
-                        foreach (glob("mods/*.php") as $mods) {
-                            include $mods;
-                        }
-                    }
+					foreach (glob("mods/*.php") as $mods) {
+						include $mods;
+					}
+					$mods_loaded = 1;
                 }
             }
             
