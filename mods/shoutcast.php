@@ -1,6 +1,7 @@
 <?php
 //Shoutcast module created by TheEpTic & xBytez - This module has been tested only on Shoutcast 1.9.8
 global $IRC;
+global $pid;
 
 //Do not touch unless you know what you're doing
 if ($sc_enabled == true) {
