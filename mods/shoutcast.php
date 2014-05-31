@@ -2,7 +2,6 @@
 //Shoutcast module created by TheEpTic & xBytez - This module has been tested only on Shoutcast 1.9.8
 global $IRC;
 
-$pid = getmypid();
 //Do not touch unless you know what you're doing
 if ($sc_enabled == true) {
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
