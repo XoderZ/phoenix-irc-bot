@@ -56,7 +56,7 @@ if (strpos($IRC->buffer, $prefix . "raw")) {
 			$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
 		}
 	} else {
-		$IRC->send("PRIVMSG ".$IRC->channel." :[ERROR] Dangerous functions are DISABLED, check your config if you want to enable them.");
+		$IRC->send("PRIVMSG ".$IRC->channel." :[ERROR] Dangerous functions are DISABLED, check your config if you want to enable them.\r\n");
 	}
 }
 if (strpos($IRC->buffer, $prefix . "eval")) {
@@ -74,7 +74,7 @@ if (strpos($IRC->buffer, $prefix . "eval")) {
 			$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
 		}
 	} else {
-		$IRC->send("PRIVMSG ".$IRC->channel." :[ERROR] Dangerous functions are DISABLED, check your config if you want to enable them.");
+		$IRC->send("PRIVMSG ".$IRC->channel." :[ERROR] Dangerous functions are DISABLED, check your config if you want to enable them.\r\n");
 	}
 }
 
