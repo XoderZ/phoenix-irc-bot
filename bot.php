@@ -54,7 +54,7 @@ Y888888P 88   YD  `Y88P'   Y8888P'  `Y88P'     YP\r\n\r\n\r\n
 
 $mod_loaded = 0;
 
-while (1 == 1) {
+while (true) {
     
     $IRC = new IRC();
     $IRC->connect($ircserver, $port);
