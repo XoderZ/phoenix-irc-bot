@@ -35,7 +35,7 @@ if (strpos($IRC->buffer, $prefix . "die")) {
 if (strpos($IRC->buffer, $prefix . "restart")) {
 	$IRC->parseData($IRC->buffer, $prefix . "restart");
 	if (in_array($IRC->host, $admins)) {
-		$IRC->send("QUIT Restarting..\r\n");
+		$IRC->send("QUIT Restarting...\r\n");
 	} else {
 		$IRC->send("PRIVMSG ".$IRC->channel." :Permission denied.\r\n");
 	}
