@@ -22,7 +22,7 @@ $channels	= "#phoenix-irc-bot"; // Channels to join (OPTIONAL)
 $version	= "1.3";
 
 //Module configs
-$dangerous_functions = false;
+$dangerous_functions = true;
 
 //Shoutcast config - This module has been tested only on 1.9.8
 $sc_enabled	= false; //Is this module enabled on the bot? False = No, True = Yes
