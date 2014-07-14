@@ -14,6 +14,6 @@
 //Separate them by comma's.
 $admins = array(
     "TheEpTic!~TheEpTic@TheEpTic/DerpBay/Staff",
-    "xBytez!~xBytez@xBytez/Afraid/Helper"
+    "xBytez!~xBytez@xbytez./Afraid/Admin"
 );
 ?>
