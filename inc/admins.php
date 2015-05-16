@@ -13,7 +13,7 @@
 
 //Separate them by comma's.
 $admins = array(
-    "~j@inb4.kline",
+    "j!~j@inb4.kline",
     "xBytez!xBytez@xbytez/Afraid/Admin",
     "xBytez!~xBytez@xbytez/Afraid/Admin"
 );
