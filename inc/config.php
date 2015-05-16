@@ -8,7 +8,7 @@
 // ******************************************************
 
 //Personal
-$nickname    = "PhoenixBot"; // nickname to use(REQUIRED)
+$nickname    = "PhoenixBot" . rand(1,999); // nickname to use(REQUIRED)
 $ident       = "Phoenix"; // ident to use (REQUIRED)
 $realname    = "Phoenix IRC bot"; // Realname (REQUIRED)
 $prefix      = "!"; //Command prefix (REQUIRED)
