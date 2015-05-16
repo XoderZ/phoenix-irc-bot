@@ -15,7 +15,7 @@ $prefix      = "!"; //Command prefix (REQUIRED)
 $nickserv	 = ""; // NickServ password (OPTIONAL)
 
 //IRC Details
-$ircserver	= "37.187.98.168"; //  RC server you want to connect to. (REQUIRED)
+$ircserver	= "irc.eptic.me"; //  RC server you want to connect to. (REQUIRED)
 $password	= ""; // Put server password (OPTIONAL)
 $port		= "6667"; // Port (REQUIRED)
 $channels	= "#phoenix-irc-bot"; // Channels to join (OPTIONAL)
